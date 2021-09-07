@@ -1,0 +1,27 @@
+.video-note {
+
+    textarea {
+        width: 360px;
+        max-width: calc(100% - 2rem);
+        height: 360px;
+        display: block;
+        margin: 0 auto;
+        resize: none;
+        border: 1px solid $primary-color;
+        padding: 1rem;
+        font-size: 1rem;
+        line-height: 1.4;
+        font-family: inherit;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+    }
+
+}
+
+@media (max-width: $tablet-size) {
+    .video-note {
+        textarea {
+            margin-top: 1rem;
+        }
+    }
+}

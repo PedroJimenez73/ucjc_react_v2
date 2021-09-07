@@ -1,0 +1,222 @@
+.slide {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 1rem 4.5rem;
+    -webkit-animation: fade-in 900ms ease-in-out;
+        animation: fade-in 900ms ease-in-out;
+
+    &.full {
+        height: calc(100vh - 8rem);
+    }
+
+    &.back {
+        background-image: url('../../img/backy.png'), url('../../img/icons/trama.svg');
+        background-repeat: no-repeat, no-repeat;
+        background-position: 0 0, 110% 0;
+        background-size: auto 100%, auto 100%;
+    }
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+
+    &.video {
+        margin-bottom: 100px;
+    }
+}
+
+.column {
+    flex-direction: column;
+}
+
+.j-start {
+    justify-content: flex-start;
+}
+
+.j-end {
+    justify-content: flex-end;
+}
+
+.j-center {
+    justify-content: center;
+}
+
+.j-between {
+    justify-content: space-between;
+}
+
+.j-around {
+    justify-content: space-around;
+}
+
+.a-start {
+    align-items: flex-start;
+}
+
+.a-end {
+    align-items: flex-end;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.col-100 {
+    width: 100%;
+}
+
+.col-90 {
+    width: 90%;
+}
+
+.col-80 {
+    width: 80%;
+}
+
+.col-75 {
+    width: 75%;
+}
+
+.col-70 {
+    width: 70%;
+}
+
+.col-66 {
+    width: 66.6666%;
+}
+
+.col-60 {
+    width: 60%;
+}
+
+.col-50 {
+    width: 50%;
+}
+
+.col-40 {
+    width: 40%;
+}
+
+.col-33 {
+    width: 33.3333%;
+}
+
+.col-30 {
+    width: 30%;
+}
+
+.col-25 {
+    width: 25%;
+}
+
+.col-20 {
+    width: 20%;
+}
+
+.col-10 {
+    width: 10%;
+}
+
+@media (max-width: $tablet-size) {
+
+    .col-90,
+    .col-80, 
+    .col-75,
+    .col-70,
+    .col-66,
+    .col-60,
+    .col-50,
+    .col-40,
+    .col-33,
+    .col-30,
+    .col-25,
+    .col-20,
+    .col-10 {
+        width: 100%;
+    }
+}
+
+.pic-container-right {
+    padding-left: 1.5rem;
+    img {
+        display: block;
+    }
+}
+
+.pic-container-left {
+    padding-right: 1.5rem;
+    img {
+        display: block;
+    }
+}
+
+.wider-pic {
+    max-width: $tablet-size;
+    margin: 0 auto;
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: $tablet-size) {
+
+    .pic-container-left {
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+    }
+
+    .pic-container-right {
+        padding-left: 0;
+        padding-top: 1.5rem;
+    }
+
+}
+
+.super-text {
+    padding: 2rem 1rem 1rem;
+    background-color: #9e9e9e;
+    color: white;
+    box-shadow: $shadow;
+    @include noselect;
+
+    b,
+    a,
+    a:visited {
+        color: white;
+    }
+}
+
+
+.m-t {
+    margin-top: 1rem;
+}
+
+.m-b {
+    margin-bottom: 1rem;
+}
+
+.m-l {
+    margin-left: 1rem;
+}
+
+.m-r {
+    margin-right: 1rem;
+}
+
+.m-t-small {
+    margin-top: 0.5rem;
+}
+
+.m-b-small {
+    margin-bottom: 0.5rem;
+}
+
+.m-l-small {
+    margin-left: 0.5rem;
+}
+
+.m-r-small {
+    margin-right: 0.5rem;
+}

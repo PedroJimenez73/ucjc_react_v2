@@ -1,0 +1,66 @@
+/* Presentation slides */
+
+#back-slide {
+    background-image: url("../../img/presentation.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow-x: hidden;
+
+    .presentation-slide {
+        background: rgba(255, 255, 255, 0.9);
+        display: inline;
+        padding: 1.5rem;
+        width: calc(100% - 80px);
+        position: absolute;
+        top: 40px;
+        transition: all 900ms linear;
+        @include noselect;
+    }
+    button {
+        border: none;
+        padding: 0 10px;
+        color: #fff;
+        font-size: 22px;
+        height: 70px;
+        z-index: 20;
+        cursor: pointer;
+        background: black;
+        transition: 900ms all ease-in-out;
+    }
+
+    button:hover {
+        background: $primary-color;
+    }
+
+    #btn-slide-back {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+    }
+
+    #btn-slide-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+    }
+}
+
+@media (max-width: $mobile-size) {
+    #back-slide {
+
+        .presentation-slide {
+            padding: 1rem;
+        }
+
+        #btn-slide-back {
+            top: 35%;
+        }
+
+        #btn-slide-next {
+            top: 35%;
+        }
+    }
+}

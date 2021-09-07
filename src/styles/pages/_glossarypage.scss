@@ -1,0 +1,53 @@
+.slide {
+    &.full.glossary {
+
+        > div {
+            @include flex(row, flex-start, stretch);
+
+            .terms-box {
+                height: calc(100vh - 300px);
+                width: 30%;
+                padding: 1rem;
+                background-color: rgb(32, 32, 32);
+                color: white;
+                overflow-y: scroll;
+
+                p {
+                    transition: 300ms all ease-in-out;
+                }
+
+                p:hover,
+                p.selected {
+                    font-family: $text-bold-font;
+                    cursor: pointer;
+                }
+            }
+
+            .definition-box {
+                width: 70%;
+                padding: 1rem;
+                background-color: #ececec;
+                overflow-y: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile-size) {
+    .slide {
+        &.full.glossary {
+            > div {
+                @include flex(column, flex-start, center);
+
+                .terms-box {
+                    height: calc(100vh - 450px);
+                    width: 100%;
+                }
+
+                .definition-box {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
