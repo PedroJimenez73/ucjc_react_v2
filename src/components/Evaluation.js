@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import EvaluationInfo from '../data/evaluationInfo';
 import icon1 from '../img/icons/check-circle.svg';
 import icon2 from '../img/icons/x-circle.svg';

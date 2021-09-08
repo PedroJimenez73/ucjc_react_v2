@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
+import { Translation } from "react-i18next";
 
 class Tree extends Component {
     constructor() {
@@ -33,7 +34,7 @@ class Tree extends Component {
 
         return (
             <>
-                {this.state.showInstructions ? <p className="instructions">Desplácese con el cursor sobre el mapa para visualizarlo completamente</p> : ''}
+                {this.state.showInstructions ? <p className="instructions"><Translation>{(t, { i18n }) => <>{t('conceptMapInstructions')}</>}</Translation></p> : ''}
                 <div className="tree">
                     <div style={{minWidth: this.props.minWidth + 'px'}}>
                         {this.props.children}

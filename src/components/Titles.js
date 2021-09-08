@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import highlight from '../img/icons/hightlight.svg';
 import erase from '../img/icons/erase.svg';
 import postitIcon from '../img/icons/message-square.svg';

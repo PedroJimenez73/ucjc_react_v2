@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import {pages} from '../App';
 
 class Slide extends Component {

@@ -1,11 +1,12 @@
 const generalInfo = {
-    degree: 'Grado en Criminología y Seguridad',
-    subject: 'Derecho Penal I, Parte General',
-    title: 'Teoría Jurídica del Delito',
+    degree: 'Lorem ipsum dolor sit amet',
+    subject: 'Lorem ipsum dolor sit amet iure dolor',
+    title: 'Repellendus <i>iure dolor</i> velit nesciunt molestias sapiente',
     credits: '6 ECTS',
-    teacherName: 'Josefina García García-Cervigón',
-    teacherTextGender: 'Autora',
-    unitCode: 'PILOT_V2'
+    teacherName: 'John Doe',
+    teacherTextGender: 'Autor',
+    unitCode: 'PILOT_V2',
+    language: 'es'
 } 
 
 export default generalInfo;

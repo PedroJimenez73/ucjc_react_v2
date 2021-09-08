@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import { pages } from '../App';
 import Titles from '../components/Titles';
 import GlossaryModal from '../components/GlossaryModal';
@@ -28,11 +28,9 @@ class Slide extends Component {
                     <PresentationSlide>
                         <p>Al culminar esta unidad, serás capaz de:</p>
                         <ul>
-                            {/* <li>Elaborar una estrategia de <GlossaryModal term={'Marketing personal'} text={'marketing personal'} color={'#00BFFF'} />.</li> */}
-                            <li>Elaborar un currículum vitae basado en indicadores de desempeño.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, facere commodi! Possimus minus, odio repellendus, quos, quas nihil impedit animi dolorum maiores optio ipsa reprehenderit adipisci.</li>
                             <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iure dolor velit nesciunt molestias, sapiente corrupti dolorum nam ratione aliquam.</li>
                             <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iure dolor velit nesciunt molestias, sapiente corrupti dolorum nam ratione aliquam.</li>
-                            {/* <li>Responder a preguntas bajo la metodología <GlossaryModal term={'Método STAR'} text={'STAR'} color={'#00BFFF'} /> en una <GlossaryModal term={'Entrevista laboral'} text={'entrevista laboral'} color={'#00BFFF'} /> por competencias.</li> */}
                         </ul>                    
                     </PresentationSlide>
                 </Presentation>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import autoBind from 'react-autobind';
 import { pages } from '../App';
 import Titles from '../components/Titles';

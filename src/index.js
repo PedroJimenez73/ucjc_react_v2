@@ -4,7 +4,7 @@ import './styles/main.scss';
 import App from './App';
 import { HashRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import ScormProvider from './scormServices/ScormProvider';
+import ScormProvider from './services/ScormProvider';
 
 ReactDOM.render(
     <React.StrictMode>

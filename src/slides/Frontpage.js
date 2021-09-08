@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import generalInfo from '../data/generalInfo';
+import parse from 'html-react-parser';
 
 class Frontpage extends Component {
 
@@ -12,12 +13,12 @@ class Frontpage extends Component {
     render() {
         return (
             <div className="frontpage">
-                <div class="frontpage-text">
-                    <p>{generalInfo.degree}</p>
+                <div className="frontpage-text">
+                    <p>{parse(generalInfo.degree)}</p>
                     <hr />
-                    <p>{generalInfo.subject}</p>
+                    <p>{parse(generalInfo.subject)}</p>
                     <hr />
-                    <p>{generalInfo.title}</p>
+                    <p>{parse(generalInfo.title)}</p>
                     <hr />
                     <p>{generalInfo.credits}</p>
                     <p>{generalInfo.teacherName}</p>

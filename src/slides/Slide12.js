@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import { pages } from '../App';
 import Titles from '../components/Titles';
 import Quote from '../components/Quote';

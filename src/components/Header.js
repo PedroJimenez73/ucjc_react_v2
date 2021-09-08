@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import generalInfo from '../data/generalInfo';
 import parse from 'html-react-parser';
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import withScorm from './scormServices/withScorm';
+import withScorm from './services/withScorm';
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SideMenu from "./components/SideMenu";
@@ -78,10 +79,12 @@ import Slide103 from './slides/Slide103';
 import Slide103bis from './slides/Slide103bis';
 import Slide104 from './slides/Slide104';
 
+import i18n from './services/translations/i18n';
+
 export const pages = [
-    { title: "Portada", component: Frontpage, name: 'Frontpage'},
-    { title: "Presentación", component: Slide2, name: 'Slide2'},
-    { title: "Mapa conceptual", component: Slide3, name: 'Slide3'},
+    { title: i18n.t('frontpageTitle'), component: Frontpage, name: 'Frontpage'},
+    { title: i18n.t('presentationTitle'), component: Slide2, name: 'Slide2'},
+    { title: i18n.t('conceptMapTitle'), component: Slide3, name: 'Slide3'},
     { title: "Video", component: Slide4, name: 'Slide4'},
     { title: "", component: Slide5, name: 'Slide5'},
     { title: "Marketing personal", component: Slide6, name: 'Slide6', item: '1'},
@@ -146,12 +149,12 @@ export const pages = [
 
    
     { title: "Adivina la palabra", component: Slide99, name: 'Slide99'},
-    { title: "Glosario", component: Slide100, name: 'Slide100'},
-    { title: "Evaluación", component: Slide101, name: 'Slide101'},
-    { title: "Links de interés", component: Slide102, name: 'Slide102'},
-    { title: "Bibliografía", component: Slide103, name: 'Slide103'},
-    { title: "Video", component: Slide103bis, name: 'Slide103bis'},
-    { title: "Créditos", component: Slide104, name: 'Slide104'}
+    { title: i18n.t('glossaryTitle'), component: Slide100, name: 'Slide100'},
+    { title: i18n.t('evaluationTitle'), component: Slide101, name: 'Slide101'},
+    { title: i18n.t('interestingLinksTitle'), component: Slide102, name: 'Slide102'},
+    { title: i18n.t('bibliographyTitle'), component: Slide103, name: 'Slide103'},
+    { title: i18n.t('feedbackTitle'), component: Slide103bis, name: 'Slide103bis'},
+    { title: i18n.t('creditsTitle'), component: Slide104, name: 'Slide104'}
 ]
 
 class App extends Component {

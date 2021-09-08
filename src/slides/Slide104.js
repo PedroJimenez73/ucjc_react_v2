@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
-import withScorm from '../scormServices/withScorm';
+import withScorm from '../services/withScorm';
 import generalInfo from '../data/generalInfo';
 import frontpage from '../img/frontpage.jpg';
 
