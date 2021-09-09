@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import withScorm from '../services/withScorm';
 import autoBind from 'react-autobind';
+import withScorm from '../services/withScorm';
 import { pages } from '../App';
-import Titles from '../components/Titles';
-import Quote from '../components/Quote';
-import VerticalTable from '../components/VerticalTable';
-import VerticalTableContent from '../components/VerticalTableContent';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
+import Titles from '../components/Titles';
+import Link from '../components/Link';
+import picFile from '../img/pic7.jpg';
 
 class Slide extends Component {
+
     constructor() {
         super()
         rangy.init();
@@ -21,20 +21,16 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
+        this.getData();
     }
 
     getData() {
         const {currentPage, cmiDataState} = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
 
     render() {
@@ -42,12 +38,12 @@ class Slide extends Component {
 
         this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
             ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
+            tagNames: ["span", "a", "li"]
         }));
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -63,35 +59,30 @@ class Slide extends Component {
             }
             deleteHighlight(currentPage - 1);
         }
-        const titles = [
-            'Coherencia',
-            'Constancia',
-            'Confianza'
-        ]
+
+        const image = {
+            src: picFile,
+            alt: 'imagen',
+            footText: ''
+        };
+
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                        subtitle={''}
+                        subtitle={'Enlace'}
                         showHighLightButtons={true}
+                        showPostItButton={true}
                         handleHiglight={handleHiglight}
                         handleErase={handleErase}
                         />
-                <div className="flex">
-                    <div className="col-100">
-                        <Quote text={'<b>Si entendemos por marca personal aquello que nos hace únicos y diferentes del resto de individuos</b> encontramos que el propósito del <i>personal branding</i>, como proceso, es conseguir identificar aquello que te hace valioso, útil y fiable para que te perciban como la persona con quien hay que estar o trabajar.'}
-                            author={'(Pérez Ortega, Andrés para Romero Abreu, 2015)'}/>
-                        <p className="m-t">Existen actitudes que, independientemente del campo de especialidad, deben ser los pilares de una marca. Entre ellos tenemos:</p>
-                        <VerticalTable titles={titles}>
-                            <VerticalTableContent>
-                                <p>La capacidad de actuar en consecuencia entre lo que digo y hago, de acuerdo con mis principios y valores.</p>
-                            </VerticalTableContent>
-                            <VerticalTableContent>
-                                <p>Trabajar con disciplina, ser perseverante por lograr los objetivos, en todo momento.</p>
-                            </VerticalTableContent>
-                            <VerticalTableContent>
-                                <p>Generar seguridad de que voy a cumplir con mi palabra, cumpliéndola desde el primer momento. La confianza es el pilar más importante de mi reputación.</p>
-                            </VerticalTableContent>
-                        </VerticalTable>
+                <div className="row" id="selectable">
+                    <div className="col-50 left-container">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>
+                        <Link text={'<p><a target="_blank" rel="noreferrer" href="https://es.wikipedia.org/wiki/Lorem_ipsum">Origen del poema Lorem Ipsum</a></p>'} />                    
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>
+                    </div>
+                    <div className="col-50 right-container">
+                        <img src={image.src} alt={image.alt} />
                     </div>
                 </div>
             </div>

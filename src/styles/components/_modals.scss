@@ -34,6 +34,7 @@
                 font-weight: 400;
                 cursor: pointer;
                 color: $regular-font-color;
+                background-color: initial;
                 @include noselect;
             }
         }
@@ -44,6 +45,7 @@
 
             p {
                 text-align: left;
+                background-color: initial;
             }
 
             .modal-paragraph {
@@ -53,6 +55,7 @@
                 color: $regular-font-color;
                 font-weight: 400;
                 @include noselect;
+                background-color: initial;
             }
         }
 

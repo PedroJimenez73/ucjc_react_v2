@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
-import {pages} from '../App';
+import { pages } from '../App';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
 import Titles from '../components/Titles';
-import VideoNote from '../components/VideoNote';
-import picFile from '../img/videofake.svg';
+import picFile from '../img/pic1.jpg';
 
 class Slide extends Component {
 
@@ -18,31 +17,21 @@ class Slide extends Component {
         rangy.init();
         this.highlighter = rangy.createHighlighter();
         autoBind(this);
-        this.state = {
-            videoHeight: 0
-        }
     }
 
     componentDidMount() {
         this.getData();
-        const videoWidth = document.getElementById('video').offsetWidth;
-        const newVideoHeight = videoWidth * 0.5625 + 'px';
-        this.setState({videoHeight: newVideoHeight})
-
-    }
-
-    componentDidUpdate() {
-        this.getData()
     }
 
     getData() {
         const {currentPage, cmiDataState} = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
+
 
     render() {
         const {currentPage, deleteHighlight, setHighlight} = this.props.sco;
@@ -54,7 +43,7 @@ class Slide extends Component {
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -74,32 +63,29 @@ class Slide extends Component {
         const image = {
             src: picFile,
             alt: 'imagen',
+            footText: ''
         };
 
         return (
-            <div className="slide back">
+            <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                        subtitle={''}
+                        subtitle={'<i>Layout</i> en columnas <i>responsive</i>'}
                         showHighLightButtons={true}
+                        showPostItButton={true}
                         handleHiglight={handleHiglight}
                         handleErase={handleErase}
                         />
-                <div className="flex">
-                    <ul className="tempor">
-                        {/* <li>Elaborar una estrategia de <GlossaryModal term={'Marketing personal'} text={'marketing personal'} color={'#00BFFF'} />.</li> */}
-                        <li>Elaborar un currículum vitae basado en indicadores de desempeño.</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iure dolor velit nesciunt molestias, sapiente corrupti dolorum nam ratione aliquam.</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iure dolor velit nesciunt molestias, sapiente corrupti dolorum nam ratione aliquam.</li>
-                        {/* <li>Responder a preguntas bajo la metodología <GlossaryModal term={'Método STAR'} text={'STAR'} color={'#00BFFF'} /> en una <GlossaryModal term={'Entrevista laboral'} text={'entrevista laboral'} color={'#00BFFF'} /> por competencias.</li> */}
-                    </ul>  
-                </div>
-                <div className="flex">
-                    <div className="col-60" id="video">
-                        <img src={image.src} alt={image.alt} />
-                        {/* <iframe width="100%" height={this.state.videoHeight} src="https://www.youtube.com/embed/DC9pAFnmiWY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                <div className="row" id="selectable">
+                    <div className="col-33 left-container">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sunt distinctio quia animi sint culpa enim nostrum laboriosam consequatur dolor?</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ipsum.</p>
                     </div>
-                    <div className="col-40">
-                        <VideoNote title={pages[currentPage - 1].title} videoNumber={currentPage} />
+                    <div className="col-33">
+                        <img src={image.src} alt={image.alt} />
+                    </div>
+                    <div className="col-33 right-container">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ipsum.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sunt distinctio quia animi sint culpa enim nostrum laboriosam consequatur dolor?</p>
                     </div>
                 </div>
             </div>

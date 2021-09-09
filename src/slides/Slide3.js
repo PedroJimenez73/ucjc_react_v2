@@ -15,6 +15,7 @@ class Slide extends Component {
                 <Titles title={pages[currentPage - 1].title}
                         subtitle={''}
                         showHighLightButtons={false}
+                        showPostItButton={true}
                         />
                 <Tree minWidth={1800}>
                      <ul>

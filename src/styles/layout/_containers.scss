@@ -8,14 +8,9 @@
     &.full {
         height: calc(100vh - 8rem);
     }
-
-    &.back {
-        background-image: url('../../img/backy.png'), url('../../img/icons/trama.svg');
-        background-repeat: no-repeat, no-repeat;
-        background-position: 0 0, 110% 0;
-        background-size: auto 100%, auto 100%;
-    }
 }
+
+// Flex on demand
 
 .flex {
     display: flex;
@@ -60,6 +55,17 @@
 
 .a-center {
     align-items: center;
+}
+
+// Rows & cols
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    img {
+        display: block;
+    }
 }
 
 .col-100 {
@@ -137,18 +143,12 @@
     }
 }
 
-.pic-container-right {
+.right-container {
     padding-left: 1.5rem;
-    img {
-        display: block;
-    }
 }
 
-.pic-container-left {
+.left-container {
     padding-right: 1.5rem;
-    img {
-        display: block;
-    }
 }
 
 .wider-pic {
@@ -162,20 +162,18 @@
 
 @media (max-width: $tablet-size) {
 
-    .pic-container-left {
+    .left-container {
         padding-right: 0;
-        padding-bottom: 1.5rem;
     }
 
-    .pic-container-right {
+    .right-container {
         padding-left: 0;
-        padding-top: 1.5rem;
     }
-
 }
 
 .super-text {
     padding: 2rem 1rem 1rem;
+    margin-bottom: 1rem;
     background-color: #9e9e9e;
     color: white;
     box-shadow: $shadow;

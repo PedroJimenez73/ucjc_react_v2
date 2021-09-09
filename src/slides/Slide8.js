@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import withScorm from '../services/withScorm';
 import autoBind from 'react-autobind';
+import withScorm from '../services/withScorm';
 import { pages } from '../App';
-import Titles from '../components/Titles';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
-import picFile from '../img/RLE_M3_01.jpg';
-import GlossaryModal from '../components/GlossaryModal'
-import Accordion from '../components/Accordion';
-import AccordionArticle from '../components/AccordionArticle';
-
+import Titles from '../components/Titles';
+import picFile from '../img/pic4.jpg';
+import GlossaryModal from '../components/GlossaryModal';
 
 class Slide extends Component {
+
     constructor() {
         super()
         rangy.init();
@@ -23,33 +21,29 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
+        this.getData();
     }
 
     getData() {
-        const { currentPage, cmiDataState } = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        const {currentPage, cmiDataState} = this.props.sco;
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
 
     render() {
-        const { currentPage, deleteHighlight, setHighlight } = this.props.sco;
+        const {currentPage, deleteHighlight, setHighlight} = this.props.sco;
 
         this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
             ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
+            tagNames: ["span", "a", "li"]
         }));
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -57,9 +51,9 @@ class Slide extends Component {
         const handleErase = () => {
             this.highlighter.removeAllHighlights()
             const elems = document.getElementsByClassName('highlight');
-            if (elems.length > 0) {
+            if(elems.length > 0) {
                 console.log('rangy bug');
-                for (let i = 0; i < elems.length; i++) {
+                for(let i = 0; i < elems.length; i++) {
                     elems[i].classList.remove('highlight');
                 }
             }
@@ -69,32 +63,27 @@ class Slide extends Component {
         const image = {
             src: picFile,
             alt: 'imagen',
+            footText: ''
         };
 
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                    subtitle={''}
-                    showHighLightButtons={true}
-                    handleHiglight={handleHiglight}
-                    handleErase={handleErase}
-                />
-                <div className="flex">
-                    <div className="col-50">
-                        <p>Diferenciemos conceptos:</p>
-                        <p>Menús desplegables</p>
-                        <Accordion>
-                            <AccordionArticle title={'Marca personal'}>
-                                <p><GlossaryModal term={'Marca personal'} text={'Marca personal'} color={'#00BFFF'} /> es la <b>manera en la que las personas perciben quién eres a raíz de cómo te comportas, te comunicas e interactúas con el resto</b>. En el ámbito profesional, es la manera en que las personas perciben tu trabajo, tu desempeño, el valor que aportas con estos, y lo más importante, cómo perciben las relaciones que construyes con tus compañeros de clase o de trabajo.</p>
-                            </AccordionArticle>
-                            <AccordionArticle title={'Marketing personal o profesional'}>
-                                <p>Por otro lado, <b>Marketing personal, o profesional</b> cuando nos situamos en ese terreno, se refiere a <b>cómo gestionamos los atributos que aporta nuestra marca profesional y cómo logramos que esta se posicione en nuestro mercado laboral objetivo</b>, ya sea dentro de la organización donde trabajamos o fuera de esta, atrayendo a personas claves del ámbito de nuestra especialidad y por lo tanto, generándonos mayores oportunidades de crecimiento profesional.</p>
-                            </AccordionArticle>
-                        </Accordion>
-                        <p className="m-t">Actualmente, una estrategia exitosa de marketing profesional es la que se logra online, a través del uso de redes sociales y profesionales. Esta debe variar en función a los objetivos que nos vayamos trazando, por ejemplo, conseguir nuestro primer empleo, lograr un ascenso, emprender, entre otros. Asimismo, se deberá redefinir en función a los cambios que atraviesa el mundo laboral y el impacto que estos generan en sus demandas.</p>
-                    </div>
-                    <div className="col-50 pic-container-right fade-in-delayed">
+                        subtitle={'Acceso a glosario en palabras'}
+                        showHighLightButtons={true}
+                        showPostItButton={true}
+                        handleHiglight={handleHiglight}
+                        handleErase={handleErase}
+                        />
+                <div className="row" id="selectable">
+                    <div className="col-50 left-container">
                         <img src={image.src} alt={image.alt} />
+                    </div>
+                    <div className="col-50 right-container">
+                        <p>Lorem ipsum dolor sit, amet <b>consectetur adipisicing elit</b>. Adipisci, exercitationem. Lorem ipsum dolor sit amet consectetur.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem vitae obcaecati sunt fugiat pariatur voluptas, illum quae quis, minima labore exercitationem possimus quasi porro. Tenetur placeat quibusdam quae quam dicta itaque corporis rem tempora quidem!</p>
+                        <p>¿A qué nos referimos cuando hablamos de <GlossaryModal term={'Empleabilidad'} text={'empleabilidad'} color={'#84a0b4'} />? Pues, nos referimos a ser capaces de desarrollar un conjunto de habilidades que no solamente nos permitan obtener un empleo cuando lo buscamos, sino también mantenerlo y a lo largo de nuestra trayectoria conseguir mejores oportunidades de desarrollo profesional.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus!</p>
                     </div>
                 </div>
             </div>
@@ -103,3 +92,4 @@ class Slide extends Component {
 }
 
 export default withScorm()(Slide);
+

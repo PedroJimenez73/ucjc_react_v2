@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
 import { pages } from '../App';
-import Titles from '../components/Titles';
-import Quote from '../components/Quote';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
-import picFile from '../img/RLE_M3_04.jpg';
+import Titles from '../components/Titles';
+import picFile from '../img/pic8.jpg';
+import parse from 'html-react-parser';
 
 class Slide extends Component {
+
     constructor() {
         super()
         rangy.init();
@@ -20,32 +21,29 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
+        this.getData();
     }
 
     getData() {
-        const { currentPage, cmiDataState } = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        const {currentPage, cmiDataState} = this.props.sco;
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
+
     render() {
-        const { currentPage, deleteHighlight, setHighlight } = this.props.sco;
+        const {currentPage, deleteHighlight, setHighlight} = this.props.sco;
 
         this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
             ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
+            tagNames: ["span", "a", "li"]
         }));
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -53,9 +51,9 @@ class Slide extends Component {
         const handleErase = () => {
             this.highlighter.removeAllHighlights()
             const elems = document.getElementsByClassName('highlight');
-            if (elems.length > 0) {
+            if(elems.length > 0) {
                 console.log('rangy bug');
-                for (let i = 0; i < elems.length; i++) {
+                for(let i = 0; i < elems.length; i++) {
                     elems[i].classList.remove('highlight');
                 }
             }
@@ -65,27 +63,26 @@ class Slide extends Component {
         const image = {
             src: picFile,
             alt: 'imagen',
-            footText: ''
+            footText: 'Recuperado de <a href="https://pixabay.com/es/" target="_blank" rel="noreferrer">Pixabay.com</a>'
         };
 
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                    subtitle={''}
-                    showHighLightButtons={true}
-                    handleHiglight={handleHiglight}
-                    handleErase={handleErase}
-                />
-                <div className="flex">
-                    <div className="col-50">
-                        <Quote text={'Somos dueños de nuestra actitud; de la actitud con la que decidimos trabajar, de la actitud con la que decidimos vivir, de la actitud que define realmente nuestra imagen personal.'}
-                            author={'Temple, I. (2015)'}/>
-
-
-                    </div>
-                    <div className="col-50 pic-container-right fade-in-delayed">
+                        subtitle={'Pie de imagen'}
+                        showHighLightButtons={true}
+                        showPostItButton={true}
+                        handleHiglight={handleHiglight}
+                        handleErase={handleErase}
+                        />
+                <div className="row" id="selectable">
+                    <div className="col-50 left-container">
                         <img src={image.src} alt={image.alt} />
-                        {/* <p className="pic-footer">{image.footText}</p> */}
+                        <p className="pic-footer">{parse(image.footText)}</p>
+                    </div>
+                    <div className="col-50 right-container">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>
                     </div>
                 </div>
             </div>

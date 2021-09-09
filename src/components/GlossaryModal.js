@@ -30,7 +30,7 @@ const GlossaryModal = (props) => {
 
     return(
       <>
-        <span className="glossary" style={{color: props.color}} onClick={handleToggleModal}>{ parse(props.text) } <img onClick={handleToggleModal} src={eye} alt="logo ojo" /></span>
+        <span className="glossary-word"><span onClick={handleToggleModal} style={{color: props.color}}>{parse(props.text)}</span> <img onClick={handleToggleModal} src={eye} alt="logo ojo" /></span>
         <span ref={overlayRef} className={isModalOpen ? 'overlay open' : 'overlay'} onClick={handleToggleModal}>
             <span className="modal">
                 <span className="modal-header">

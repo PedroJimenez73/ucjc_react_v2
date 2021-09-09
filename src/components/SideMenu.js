@@ -32,7 +32,7 @@ class SideMenu extends Component {
                 </div>
                 <div className="menu">
                     {pages.map((page, index) => {
-                        if(page.title !== '') {
+                        if(page.title !== '' && page.title !== pages[index - 1]?.title) {
                             return <div key={index} className="item" onClick={() => {
                                                                         navToPage(index + 1);
                                                                         this.asideMenuRef.current.classList.toggle('open');

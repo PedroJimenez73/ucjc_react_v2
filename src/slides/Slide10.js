@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
 import { pages } from '../App';
-import Titles from '../components/Titles';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
-import picFile from '../img/RLE_M3_03.jpg';
+import Titles from '../components/Titles';
+import Quote from '../components/Quote';
+import picFile from '../img/pic6.jpg';
 
 class Slide extends Component {
+
     constructor() {
         super()
         rangy.init();
@@ -19,32 +21,29 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
+        this.getData();
     }
 
     getData() {
-        const { currentPage, cmiDataState } = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        const {currentPage, cmiDataState} = this.props.sco;
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
+
     render() {
-        const { currentPage, deleteHighlight, setHighlight } = this.props.sco;
+        const {currentPage, deleteHighlight, setHighlight} = this.props.sco;
 
         this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
             ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
+            tagNames: ["span", "a", "li"]
         }));
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -52,9 +51,9 @@ class Slide extends Component {
         const handleErase = () => {
             this.highlighter.removeAllHighlights()
             const elems = document.getElementsByClassName('highlight');
-            if (elems.length > 0) {
+            if(elems.length > 0) {
                 console.log('rangy bug');
-                for (let i = 0; i < elems.length; i++) {
+                for(let i = 0; i < elems.length; i++) {
                     elems[i].classList.remove('highlight');
                 }
             }
@@ -64,41 +63,28 @@ class Slide extends Component {
         const image = {
             src: picFile,
             alt: 'imagen',
-            footText: 'Tabla 2. Resumen de experiencia y talentos. Recuperado de Canepa, P., & Merino, P., 2020.'
+            footText: ''
         };
 
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                    subtitle={''}
-                    showHighLightButtons={true}
-                    handleHiglight={handleHiglight}
-                    handleErase={handleErase}
-                />
-                <div className="flex">
-                    <div className="col-40">
-                        <p>Adicionalmente, puedes realizar un listado de tus talentos especiales, los que has ganado a través de la experiencia. Estos incluirán tus conocimientos, habilidades y actitudes en el ámbito de tu especialización. Haz una revisión profunda de:</p>
-
-                        <ul className="regular tempor">
-                            <li>Lo que sabes hacer: desde la teoría.</li>
-                            <li>Lo que puedes hacer: desde la práctica.</li>
-                            <li>Lo que quieres hacer: desde la vocación y pasión.</li>
-                        </ul>
-
-                        <p className="fade-four m-t">A continuación, te presentamos ejemplos que te ayudarán a elaborar un listado preliminar de tus experiencias más relevantes</p>
-
+                        subtitle={'Cita'}
+                        showHighLightButtons={true}
+                        showPostItButton={true}
+                        handleHiglight={handleHiglight}
+                        handleErase={handleErase}
+                        />
+                <div className="row" id="selectable">
+                    <div className="col-50 left-container">
+                        <img src={image.src} alt={image.alt} />
                     </div>
-                    <div className="col-60 pic-container-right">
-                        <table className="activity">
-                            <tr><th></th><th>Experiencias que te diferencian</th> 	<th>Talentos especiales</th> </tr>
-                            <tr><td style={{textAlign: 'center'}}>Experiencia 1</td> 	<td>Participación en un concurso de ideas generado por una empresa de multicines, para identificar un nuevo modelo de negocio en respuesta a la pandemia.</td>	<td rowSpan="2">TALENTO ESPECIAL 1 <br />Aportar ideas innovadoras para resolver problemas complejos con tecnología.</td></tr>
-                            <tr><td>Resultado</td> 	<td>Obtención del primer puesto y reconocimiento como idea destacada.</td></tr>
-                            <tr><td style={{textAlign: 'center'}}>Experiencia 2</td> 	<td>Trabajo multidisciplinario para la creación de una plataforma virtual de servicios médicos a domicilio.</td>	<td rowSpan="2">TALENTO ESPECIAL 2<br /> Identificar oportunidades de mercado que crean valor para el cliente con tecnología.</td></tr>
-                            <tr><td>Resultado</td> 	<td>Reconocimiento por una idea viable en la feria de proyectos.</td></tr>
-                            <tr><td style={{textAlign: 'center'}}>Experiencia 3</td> 	<td>Tomar iniciativa para generar la continuidad de una Organización Estudiantil utilizando eventos interactivos para convocar nuevos integrantes.</td>	<td rowSpan="2">TALENTO ESPECIAL 3 <br />Aportar iniciativa y proactividad para sacar adelante nuevos proyectos y generar valor en equipo.</td></tr>
-                            <tr><td>Resultado</td> 	<td>Reconocimiento del líder y del profesor involucrado por las ideas presentadas.</td></tr>
-                        </table>
-                        <p className="pic-footer">{image.footText}</p>
+                    <div className="col-50 right-container">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>
+                        <Quote text={'Una red efectiva requiere tu atención, mantenimiento y cuidado.'}
+                               author={'(Paige. M. <i>Lorem ipsum</i> , 2020)'} />
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat sunt nam commodi.</p>
+                        {/* <Link text={'<p><a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1MxJkuwidriziJm-4Z-oISgCx-X18Hzjo/view?usp=sharing">Plantilla 1: Para estudiantes sin experiencia laboral</a></p><p><a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1LsLaNasuzmJ1aJE8a0KpH11oeZt8kqyY/view?usp=sharing">Plantilla 2: Para estudiantes con experiencia laboral</a></p>'} />                     */}
                     </div>
                 </div>
             </div>
