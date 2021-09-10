@@ -20,6 +20,7 @@ class Slide extends Component {
                 <Titles title={pages[currentPage - 1].title}
                         subtitle={''}
                         showHighLightButtons={false}
+                        showPostItButton={false}
                         />
                 <Donut />
             </div>

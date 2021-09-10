@@ -8,7 +8,6 @@ import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
 import Titles from '../components/Titles';
-import Question from '../components/Question';
 import JumboModal from '../components/JumboModal';
 import picFile from '../img/pic7.jpg';
 

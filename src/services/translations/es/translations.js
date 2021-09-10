@@ -15,10 +15,26 @@ export const TRANSLATIONS_ES = {
     feedbackTitle: 'Feedback',
     creditsTitle: 'Créditos',
     notesTitle: 'Apuntes',
+    donutTitle: 'Rosco de definiciones',
     notesPlaceholder: 'Escriba aquí sus anotaciones',
     conceptMapInstructions: 'Desplácese con el cursor sobre el mapa para visualizarlo completamente',
     flipCardsInstructions: 'Pulse sobre cada imagen para visualizar la información',
     timelineInstructions: 'Pulse sobre cada rectángulo para visualizar la información',
     associateInstructions: 'Asocie cada elemento de la izquierda con el de la derecha haciendo clic sucesivamente sobre cada uno',
     associateMessage: '¡Correcto! Puede continuar a la siguiente pantalla',
+    glossaryInstructions: 'Desplácese y pulse en los términos para visualizar la definición',
+    donutTexts: {
+        intro: 'A continuación, intente averiguar las palabras de esta unidad en el menor tiempo posible. (Máximo ',
+        startButton: 'Comenzar',
+        seconds: 'segundos',
+        with: 'Con la',
+        checkButton: 'Comprobar',
+        stepButton: 'Pasapalabra',
+        results: 'Resultados',
+        corrects: 'Aciertos:',
+        time: 'Tiempo empleado:',
+        successMessage: 'Enhorabuena ha superado la prueba.',
+        failMessage: 'Lo sentimos no ha superado la prueba.',
+        tryAgainButton: 'Intentar de nuevo'
+    }
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import glossaryInfo from '../data/glossaryInfo'
 import parse from 'html-react-parser';
+import i18n from '../services/translations/i18n';
 
 const GlossaryPage = (props) => {
     const [position, setPosition] = useState(0);
@@ -11,7 +12,7 @@ const GlossaryPage = (props) => {
     
     return(
       <>
-        <p className="instructions">Desplácese y pulse en los términos para visualizar la información</p>
+        <p className="instructions">{i18n.t('glossaryInstructions')}</p>
         <div>
             <div className="terms-box">
                 {glossaryInfo.glossaryTerms.map((term, index) => {

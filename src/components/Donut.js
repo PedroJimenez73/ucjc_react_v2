@@ -1,241 +1,3 @@
-// import React from 'react';
-// import { useState, useEffect } from 'react';
-// import donutInfo from '../data/donutInfo';
-// import clock from '../img/icons/clock.svg';
-// import incorrectAudio from '../audio/bounce.mp3';
-// import correctAudio from '../audio/clic.mp3';
-// import notPassed from '../audio/fail.mp3';
-// import passed from '../audio/winner.mp3';
-
-// export default function Donut() {
-
-//     const [currentLetter, setCurrentLetter] = useState(0);
-//     const [textarea, setTextarea] = useState('')
-//     const [correct, setCorrect] = useState([])
-//     const [fail, setFail] = useState([])
-//     const [isOpen, setIsOpen] = useState(false);
-//     const [isActive, setIsActive] = useState(false);
-//     const [second, setSecond] = useState(60);
-//     const [timeConter, setTimeConter] = useState(0);
-    
-//     const [myAudioCorrect] = useState (new Audio(correctAudio))
-//     const [myAudioFail] = useState (new Audio(incorrectAudio))
-//     const [myAudioNotPassed] = useState (new Audio(notPassed))
-//     const [myAudioPassed] = useState (new Audio(passed))
-
-//     const nextLetter= () => {
-//         if(currentLetter === 0){
-//             setIsActive(true)
-//             setTimeConter(0)
-//             setCurrentLetter( currentLetter+1 )
-         
-//         }else{
-//             setCurrentLetter( currentLetter+1 )
-//             finishAudio()
-//             if(second !== 0){
-//                 let rest = 60 - second
-//                 setTimeConter(timeConter + rest)
-//                 setSecond(60)
-//             }else{
-//                 setTimeConter(timeConter + 60)
-//                 setSecond(60)
-                
-//             }
-            
-//         }
-//     } 
-
-//     const textareaChange = (e) => {
-//         e.preventDefault()
-//         setTextarea(  e.target.value )
-//     }
-
-//     const check = (letterObject) => {
-//         if (textarea.toLowerCase().trim() === letterObject.answer.toLowerCase()){
-//             setTextarea('')
-//             nextLetter()
-//             Correct(letterObject.letter)
-//             myAudioCorrect.play()
-         
-//         } else {
-//             wrongAnswer(letterObject.letter)
-//         }
-//     }
-
-//     const Correct = (letter) => {
-//         setCorrect(state => [...state, letter])
-//     } 
-
-//     const Fail = (letter) => {
-//         setFail(state => [...state, letter])
-//     } 
-
-//     const wrongAnswer = (letterObject) => {
-//         setTextarea('')
-//         nextLetter()
-//         Fail(letterObject)
-//         myAudioFail.play()
-//     }
-
-//     const reset = () => {
-//         setTextarea('')
-//         setCurrentLetter(0)
-//         setCorrect([])
-//         setFail([])
-//         setIsActive(false)
-//         setSecond(60)
-//         setIsOpen(false)
-//     }
-    
-//     const toggleAnswer = () => {
-//         setIsOpen( prev => !prev )
-//     } 
-    
-//     useEffect(() => { 
-//         let intervalId;
-//         if (isActive) {
-//           intervalId = setInterval(() => {
-//             setSecond(second => second - 1);
-//           }, 1000)
-//         }
-//         return () => clearInterval(intervalId);
-//       }, [isActive, second])
-  
-
-//       const enter = (e, letterObject) => {
-//         if(e.which === 13) {
-//             e.preventDefault();
-//             check(letterObject);
-//             setTextarea('')
-//         }
-//       }
-
-//       const finishAudio = () => {
-//         if(currentLetter >= lettersLength){
-//             if(correct.length > lettersLength/2){
-//                 myAudioPassed.play()
-//             }else{
-//                 myAudioNotPassed.play()
-//             }
-//         }
-//     } 
-
-//     let letters = donutInfo.filter(letter => letter.ask !== "")
-
-//     let lettersLength = letters.length
-
-//     return(
-//         <div className="flex donut" >
-//             <div className="col-50 donut-circle">
-//                 <ul>
-//                 {donutInfo.map((alphabeticObject, i) => 
-//                     <li key={i} className={`circle__item  
-//                         ${alphabeticObject.ask !== '' ? 'circle__item--on' : ''}      
-
-//                         ${letters.length >= 1 && letters[0].letter === alphabeticObject.letter && currentLetter === 1 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 2 && letters[1].letter === alphabeticObject.letter && currentLetter === 2 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 3 && letters[2].letter === alphabeticObject.letter && currentLetter === 3 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 4 && letters[3].letter === alphabeticObject.letter && currentLetter === 4 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 5 && letters[4].letter === alphabeticObject.letter && currentLetter === 5 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 6 && letters[5].letter === alphabeticObject.letter && currentLetter === 6 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 7 && letters[6].letter === alphabeticObject.letter && currentLetter === 7 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 8 && letters[7].letter === alphabeticObject.letter && currentLetter === 8 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 9 && letters[8].letter === alphabeticObject.letter && currentLetter === 9 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 10 && letters[9].letter === alphabeticObject.letter && currentLetter === 10 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 11 && letters[10].letter === alphabeticObject.letter && currentLetter === 11 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 12 && letters[11].letter === alphabeticObject.letter && currentLetter === 12 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 13 && letters[12].letter === alphabeticObject.letter && currentLetter === 13 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 14 && letters[13].letter === alphabeticObject.letter && currentLetter === 14 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 15 && letters[14].letter === alphabeticObject.letter && currentLetter === 15 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 16 && letters[15].letter === alphabeticObject.letter && currentLetter === 16 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 17 && letters[16].letter === alphabeticObject.letter && currentLetter === 17 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 18 && letters[17].letter === alphabeticObject.letter && currentLetter === 18 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 19 && letters[18].letter === alphabeticObject.letter && currentLetter === 19 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 20 && letters[19].letter === alphabeticObject.letter && currentLetter === 20 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 21 && letters[20].letter === alphabeticObject.letter && currentLetter === 21 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 22 && letters[21].letter === alphabeticObject.letter && currentLetter === 22 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 23 && letters[22].letter === alphabeticObject.letter && currentLetter === 23 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 24 && letters[23].letter === alphabeticObject.letter && currentLetter === 24 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 25 && letters[24].letter === alphabeticObject.letter && currentLetter === 25 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 26 && letters[25].letter === alphabeticObject.letter && currentLetter === 26 ? 'circle__item--animation' : '' } 
-//                         ${letters.length >= 27 && letters[26].letter === alphabeticObject.letter && currentLetter === 27 ? 'circle__item--animation' : '' } 
-
-//                         ${correct.includes(alphabeticObject.letter) ? 'circle__item--correct' : '' } 
-//                         ${fail.includes(alphabeticObject.letter) ? 'circle__item--fail' : '' } 
-//                         `}>
-                        
-//                         {alphabeticObject.letter}
-
-//                     </li>
-//                 )
-//                 }
-//                 </ul>
-//             </div>
-//             <div className="col-50 donut-text">
-//                 <div className={currentLetter === 0 ? '' : 'none'}>
-//                     <p className='text'>A continuación, intente averiguar las palabras de esta unidad en el menor tiempo posible. (Máximo 60 segundos)</p>
-//                     <div className="flex j-end a-center m-t">
-//                         <button className='outline' onClick={nextLetter}>Comenzar</button>
-//                     </div>
-//                 </div>
-//                 <ul>
-//                     {currentLetter <= lettersLength && second > 0 ? 
-//                     letters.filter((letterObject, i) => i === currentLetter - 1).map((letterObject, i) =>
-//                     <li key={i}>
-//                         <div className="flex j-end a-center">
-//                             <img src={ clock } alt="Reloj"></img>
-//                             <p className="m-l-small"><span>{second}</span> segundos</p>
-//                         </div>
-//                         <p className="ask-title">Con la <b>{letterObject.letter}</b>:</p>
-//                         <p className="ask">{letterObject.ask}</p>
-//                         <input type='text' 
-//                                value={textarea} 
-//                                onChange={textareaChange} 
-//                                onKeyPress={(e) => enter(e, letterObject)} />
-//                         <div className="flex j-end a-center m-t">
-//                             <button className='outline' onClick={(e)=> check(letterObject)}>Comprobar</button>
-//                             <button className='outline danger m-l-small' onClick={(e)=> wrongAnswer(letterObject.letter)}>Pasapalabra</button>
-//                             {second === 0 ? wrongAnswer(letterObject.letter) : ''} 
-    
-//                         </div>
-//                     </li>
-//                     )
-//                     : 
-//                     <li>
-//                         <h3>Resultados</h3>
-//                         <p><b>Aciertos:</b> {correct.length} de {lettersLength} </p>
-//                         <p><b>Tiempo empleado:</b> {timeConter} segundos</p>
-
-//                         {correct.length > lettersLength / 2 ? 
-//                             <p className="success">Enhorabuena ha superado la prueba.</p>
-//                         :   
-//                             <p className="fail">Lo sentimos no ha superado la prueba.</p>
-//                         }
-
-//                         <div className="flex j-end a-center m-t">
-//                             <button className='outline' onClick={reset}>Intentar de nuevo</button>
-//                             <button className='outline m-l-small' onClick={toggleAnswer}>
-                                
-//                                 {isOpen ? 'Ocultar respuestas' : 'Ver respuestas'}
-//                             </button>
-//                         </div>
-                    
-//                         <ul className={isOpen ? '' : 'none'}>
-//                             {letters.map((alphabeticObject, i) => 
-//                             <li key={i} className="correct-answers">
-//                                 <p>{alphabeticObject.answer}</p>
-//                                 <p>{alphabeticObject.ask}</p>
-//                             </li>
-//                             )
-//                             }
-//                         </ul>
-//                     </li>
-//                     }
-//                 </ul> 
-//             </div>
-//         </div>
-//     )
-// }
 
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
@@ -245,6 +7,7 @@ import bounce from '../audio/bounce.mp3';
 import clic from '../audio/clic.mp3';
 import fail from '../audio/fail.mp3';
 import success from '../audio/winner.mp3';
+import i18n from '../services/translations/i18n';
 
 export default class Donut extends Component {
     constructor() {
@@ -375,9 +138,9 @@ export default class Donut extends Component {
                 </div>
                 <div className="col-50  donut-text">
                     <div className={this.state.showStart ? '' : 'none'}>
-                        <p className='text'>A continuación, intente averiguar las palabras de esta unidad en el menor tiempo posible. (Máximo {this.state.seconds} segundos)</p>
+                        <p className='text'>{i18n.t('donutTexts.intro') + ' ' + this.state.seconds + ' ' + i18n.t('donutTexts.seconds') + ')'}</p>
                         <div className="flex j-end a-center m-t">
-                            <button className='outline' onClick={() => {this.handleStart()}}>Comenzar</button>
+                            <button className='outline' onClick={() => {this.handleStart()}}>{i18n.t('donutTexts.startButton')}</button>
                         </div>
                     </div>
                     <div className={this.state.showStart ? 'none' : ''}>
@@ -385,39 +148,39 @@ export default class Donut extends Component {
                         <>
                             <div className="flex j-end a-center">
                                 <img src={ clock } alt="Reloj"></img>
-                                <p className="m-l-small"><span>{this.state.seconds}</span> segundos</p>
+                                <p className="m-l-small"><span>{this.state.seconds}</span> &nbsp;{i18n.t('donutTexts.startButton')}</p>
                             </div>
-                            <p className="ask-title">Con la <b>{this.state.letters[this.state.counter]}</b>:</p>
+                            <p className="ask-title">{i18n.t('donutTexts.with')}&nbsp; <b>{this.state.letters[this.state.counter]}</b>:</p>
                             <p className="ask">{donutInfo.questions[this.state.counter]}</p>
                             <input type='text' id="word"/>
                          <div className="flex j-end a-center m-t">
-                             <button className='outline' onClick={()=> this.handleCheckWord()}>Comprobar</button>
-                             <button className='outline danger m-l-small' onClick={()=> this.handleCheckWord()}>Pasapalabra</button>    
+                             <button className='outline' onClick={()=> this.handleCheckWord()}>{i18n.t('donutTexts.checkButton')}</button>
+                             <button className='outline danger m-l-small' onClick={()=> this.handleCheckWord()}>{i18n.t('donutTexts.stepButton')}</button>    
                          </div>
                         </>
                      : 
                         <>
-                            <h3>Resultados</h3>
-                            <p><b>Aciertos:</b> {this.state.corrects} de {this.state.letters.length} </p>
-                            <p><b>Tiempo empleado:</b> {this.state.letters.length * 15 - this.state.seconds} segundos</p>
+                            <h3>{i18n.t('donutTexts.results')}</h3>
+                            <p><b>{i18n.t('donutTexts.corrects')}</b> {this.state.corrects} / {this.state.letters.length} </p>
+                            <p><b>{i18n.t('donutTexts.time')}</b> {this.state.letters.length * 15 - this.state.seconds} {i18n.t('donutTexts.seconds')}</p>
 
                             { this.state.corrects / this.state.letters.length >= 0.5 ? 
-                                <p className="success">Enhorabuena ha superado la prueba.</p>
+                                <p className="success">{i18n.t('donutTexts.successMessage')}</p>
                             :   
-                                <p className="fail">Lo sentimos no ha superado la prueba.</p>
+                                <p className="fail">{i18n.t('donutTexts.failMessage')}</p>
                             }
                             <div className="flex j-end a-center m-t">
-                                <button className='outline' onClick={() => {this.handleReset()}}>Intentar de nuevo</button>
+                                <button className='outline' onClick={() => {this.handleReset()}}>{i18n.t('donutTexts.tryAgainButton')}</button>
                                 <button className='outline m-l-small' onClick={() => {this.handleToggleShowAnswer()}}>
-                                    {this.state.showAnswer ? 'Ocultar respuestas' : 'Ver respuestas'}
+                                    {this.state.showAnswer ? i18n.t('hideAnswerButton') : i18n.t('showAnswerButton')}
                                 </button>
                             </div>
                             <ul className={this.state.showAnswer ? '' : 'none'}>
                                 {donutInfo.answers.map((answer, i) => 
-                                    <li key={i} className="correct-answers">
+                                    <div key={i} className="correct-answers">
                                         <p>{answer}</p>
                                         <p>{donutInfo.questions[i]}</p>
-                                    </li>
+                                    </div>
                                 )
                              }
                          </ul>

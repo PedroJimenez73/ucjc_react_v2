@@ -15,10 +15,26 @@ export const TRANSLATIONS_EN = {
     feedbackTitle: 'Feedback',
     creditsTitle: 'Credits',
     notesTitle: 'Notes',
+    donutTitle: 'Terms donut',
     notesPlaceholder: 'Write here your notes',
     conceptMapInstructions: 'Move the cursor over the map to view it fully',
     flipCardsInstructions: 'Click on each picture to show the information',
     timelineInstructions: 'Click on each rectangle to show the information',
     associateInstructions: 'Associate each element on the left with the one on the right by successively clicking on each one',
     associateMessage: 'Correct! You can continue to the next screen',
+    glossaryInstructions: 'Scroll and click on the terms to view the definition',
+    donutTexts: {
+        intro: 'Then try to figure out the words in this unit in the shortest time possible. (Maximum',
+        startButton: 'Start',
+        seconds: 'seconds',
+        with: 'With',
+        checkButton: 'Check',
+        stepButton: 'Step the word',
+        results: 'Results',
+        corrects: 'Corrects:',
+        time: 'Time:',
+        successMessage: 'Congratulations you have passed the test.',
+        failMessage: 'Sorry you haven\'t passed the test.',
+        tryAgainButton: 'Try again'
+    }
 };
