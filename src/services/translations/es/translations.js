@@ -2,6 +2,9 @@ export const TRANSLATIONS_ES = {
     exitButton: 'Salir',
     prevButton: 'Anterior',
     nextButton: 'Siguiente',
+    showAnswerButton: 'Ver respuesta',
+    hideAnswerButton: 'Ocultar respuesta',
+    notesButton: 'Descargar PDF',
     frontpageTitle: 'Portada',
     presentationTitle: 'Presentación',
     conceptMapTitle: 'Mapa conceptual',
@@ -11,7 +14,11 @@ export const TRANSLATIONS_ES = {
     bibliographyTitle: 'Bibliografía',
     feedbackTitle: 'Feedback',
     creditsTitle: 'Créditos',
+    notesTitle: 'Apuntes',
+    notesPlaceholder: 'Escriba aquí sus anotaciones',
     conceptMapInstructions: 'Desplácese con el cursor sobre el mapa para visualizarlo completamente',
     flipCardsInstructions: 'Pulse sobre cada imagen para visualizar la información',
-    timelineInstructions: 'Pulse sobre cada rectángulo para visualizar la información'
+    timelineInstructions: 'Pulse sobre cada rectángulo para visualizar la información',
+    associateInstructions: 'Asocie cada elemento de la izquierda con el de la derecha haciendo clic sucesivamente sobre cada uno',
+    associateMessage: '¡Correcto! Puede continuar a la siguiente pantalla',
 };

@@ -4,6 +4,7 @@ import autoBind from 'react-autobind';
 import jsPDF from 'jspdf';
 import generalInfo from '../data/generalInfo';
 import logo from '../img/logos/logo.jpg';
+import i18n from '../services/translations/i18n';
 
 class VideoNote extends Component {
     constructor() {
@@ -73,13 +74,15 @@ class VideoNote extends Component {
 
         return (
             <div className="video-note">
-                <p>Apuntes</p>
-                <textarea placeholder="Escriba aquí sus anotaciones"
+                <p>{i18n.t('notesTitle')}</p>
+                <textarea placeholder={i18n.t('notesPlaceholder')}
                           maxLength="450" 
                           onChange={this.onChange}
                           value={this.state.videoNoteText}></textarea>
                 <div className="flex j-center a-center m-t">
-                    <button onClick={downloadNotes}>Descargar PDF</button>
+                    <button onClick={downloadNotes}>
+                        {i18n.t('notesButton')}
+                    </button>
                 </div>
             </div>
         )

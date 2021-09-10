@@ -4,6 +4,7 @@ import parse from 'html-react-parser';
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css';
 import question from '../img/icons/question.svg';
+import i18n from '../services/translations/i18n';
 
 class QuestionAnswer extends Component {
     constructor() {
@@ -28,7 +29,7 @@ class QuestionAnswer extends Component {
                         <div className="question-text" onClick={() => handleQuestion()}>
                             <span>{parse(this.props.questionText)}</span>
                             <button style={{borderRadius: '0px'}}>
-                                {this.state.open ? "Ocultar respuesta" : "Ver respuesta"}
+                                {this.state.open ? i18n.t('showAnswerButton') : i18n.t('hideAnswerButton')}
                             </button>
                         </div>
                         <SlideDown className={'my-dropdown-slidedown'}>

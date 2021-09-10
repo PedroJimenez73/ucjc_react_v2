@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
+import i18n from '../services/translations/i18n';
 
-export default class Associate36 extends Component {
+class Associate extends Component {
     constructor() {
         super()
         autoBind(this);
@@ -16,25 +17,10 @@ export default class Associate36 extends Component {
         }
     }
 
-    terms = {
-        letfTerms: [
-            {letter: 'a', term: 'Contacto visual'},
-            {letter: 'b', term: 'Gesto de manos'},
-            {letter: 'c', term: 'Dígalo con estilo'},
-            {letter: 'd', term: 'Inflexión'},
-        ],
-        rightTerms: [
-            {letter: 'c', term: '¿Cómo sueles contar las cosas? ¿Qué estilo usas?'},
-            {letter: 'a', term: '¿Cuándo expones sueles mirar a tu público?'},
-            {letter: 'd', term: '¿Juegas con los niveles de tu voz al exponer?'},
-            {letter: 'b', term: '¿Cómo sueles poner tus manos cuando expones?'},
-        ]
-    }
-
     componentDidMount() {
         let newCorrectsLeft = [];
         let newCorrectsRight = [];
-        this.terms.letfTerms.forEach((elem, i) => {
+        this.props.terms.letfTerms.forEach((elem, i) => {
             newCorrectsLeft.push(false);
             newCorrectsRight.push(false);
         })
@@ -60,8 +46,8 @@ export default class Associate36 extends Component {
 
     checkResults() {
         if(this.state.valueLeft === this.state.valueRight) {
-            const posLeft = this.terms.letfTerms.findIndex(elem => elem.letter === this.state.valueLeft)
-            const posRight = this.terms.rightTerms.findIndex(elem => elem.letter === this.state.valueRight)
+            const posLeft = this.props.terms.letfTerms.findIndex(elem => elem.letter === this.state.valueLeft)
+            const posRight = this.props.terms.rightTerms.findIndex(elem => elem.letter === this.state.valueRight)
             let newCorrectsLeft = this.state.correctsLeft;
             let newCorrectsRight = this.state.correctsRight;
             newCorrectsLeft[posLeft] = true;
@@ -78,11 +64,11 @@ export default class Associate36 extends Component {
     render() {
         return (
             <>
-                <p className="instructions">Asocie cada elemento de la izquierda con el de la derecha haciendo clic sucesivamente sobre cada uno.</p>
+                <p className="instructions">{i18n.t('associateInstructions')}</p>
                 <div className="flex associate">
                     <div className="col-50">
                         {
-                            this.terms.letfTerms.map((item, i) => <div key={i} 
+                            this.props.terms.letfTerms.map((item, i) => <div key={i} 
                                                                        className={`item ${this.state.selectedLeft === i ? 'selected' : ''} ${this.state.correctsLeft[i] ? 'success' : ''}`}
                                                                        onClick={() => this.handleToggleSelectLeftItem(item.letter, i)}>
                                                                         {item.term}
@@ -92,7 +78,7 @@ export default class Associate36 extends Component {
                     </div>
                     <div className="col-50">
                         {
-                            this.terms.rightTerms.map((item, i) => <div key={i} 
+                            this.props.terms.rightTerms.map((item, i) => <div key={i} 
                                                                        className={`item ${this.state.selectedRight === i ? 'selected' : ''} ${this.state.correctsRight[i] ? 'success' : ''}`}
                                                                        onClick={() => this.handleToggleSelectRightItem(item.letter, i)}>
                                                                         {item.term}
@@ -102,9 +88,11 @@ export default class Associate36 extends Component {
                     </div>
                 </div>
                 {
-                    this.state.successfull ? <p className="associate-success">¡Correcto! Puede continuar a la siguiente pantalla</p> : ''
+                    this.state.successfull ? <p className="associate-success">{i18n.t('associateMessage')}</p> : ''
                 }
             </>
         )
     }
 }
+
+export default Associate;
