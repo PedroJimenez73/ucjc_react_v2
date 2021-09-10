@@ -23,9 +23,9 @@ class QuestionAnswer extends Component {
         }
         return (
                 <section className="question-answer">
+                    <img className="question-img" src={ question } alt="Interrogación"/>
                     <article className={this.state.open ? "open" : ""}>
                         <div className="question-text" onClick={() => handleQuestion()}>
-                            <img className="question-img" src={ question } alt="Interrogación"/>
                             <span>{parse(this.props.questionText)}</span>
                             <button style={{borderRadius: '0px'}}>
                                 {this.state.open ? "Ocultar respuesta" : "Ver respuesta"}

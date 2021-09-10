@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
+import { Translation } from "react-i18next";
 
 class Timeline extends Component {
     constructor() {
@@ -31,7 +32,7 @@ class Timeline extends Component {
         }
         return (
             <>
-                <p className="instructions">Pulse sobre cada rectángulo para visualizar la información.</p>
+                <p className="instructions"><Translation>{(t, { i18n }) => <>{t('timelineInstructions')}</>}</Translation></p>
                 <section className="timeline">
                     {this.props.children.map((child, i) => {
                         return React.cloneElement(child, {index: i, open: this.state.open[i], handleArticle});

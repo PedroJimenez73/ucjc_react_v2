@@ -6,34 +6,26 @@
     margin: 2rem 0 1rem;
     padding: 2rem 1rem 1rem;
     @include noselect();
-}
-
-.quote{
-    &-text{
-        font-style: italic;
-    }
-    &-author{
-        margin: 20px 0px 0px;
-        text-align: end;
-    }
-    &-img{
-        position: absolute;
-        top: -35px;
-        left: 5px;
-        padding: 0 10px;
-        background-color: white;
-        width: 70px;
-        height: 70px;
-        bottom: -55px;
-        right: -10px;
-        padding: 20px 10px 10px;
-        animation: none;
-    }
-}
-
-@media (min-width: $tablet-size){
-    .quote__container{
-        margin: 45px 30px;
-        min-width: 60%;
+    
+    .quote{
+        &-text{
+            font-style: italic;
+        }
+        &-author{
+            margin: 20px 0px 0px;
+            text-align: end;
+        }
+        &-img{
+            position: absolute;
+            top: -35px;
+            left: 5px;
+            padding: 0 10px;
+            background-color: white;
+            width: 70px;
+            height: 70px;
+            bottom: -55px;
+            right: -10px;
+            padding: 20px 10px 10px;
+        }
     }
 }

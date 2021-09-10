@@ -77,7 +77,7 @@ class PicCarousel extends Component {
         
         return (
             <div className="pic-carousel-container">
-                {this.state.showSpinner ? <div class="lds-ellipsis on-carousel"><div></div><div></div><div></div><div></div></div> : ''}
+                {this.state.showSpinner ? <div className="lds-ellipsis on-carousel"><div></div><div></div><div></div><div></div></div> : ''}
                 {this.state.counter !== 0 ?
                     <div className="arrow-left-container" onClick={() => handlePrevPic()}>
                         <button><i className="arrow-left-icon"></i></button>

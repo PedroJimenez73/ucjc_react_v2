@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
 import { pages } from '../App';
-import Titles from '../components/Titles';
-import Quote from '../components/Quote';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
-import picFile from '../img/RLE_M3_09.jpg';
+import Titles from '../components/Titles';
+import Question from '../components/Question';
+import JumboModal from '../components/JumboModal';
+import picFile from '../img/pic7.jpg';
 
 class Slide extends Component {
+
     constructor() {
         super()
         rangy.init();
@@ -20,32 +22,29 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
+        this.getData();
     }
 
     getData() {
-        const { currentPage, cmiDataState } = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        const {currentPage, cmiDataState} = this.props.sco;
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
+
     render() {
-        const { currentPage, deleteHighlight, setHighlight } = this.props.sco;
+        const {currentPage, deleteHighlight, setHighlight} = this.props.sco;
 
         this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
             ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
+            tagNames: ["span", "a", "li"]
         }));
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -53,9 +52,9 @@ class Slide extends Component {
         const handleErase = () => {
             this.highlighter.removeAllHighlights()
             const elems = document.getElementsByClassName('highlight');
-            if (elems.length > 0) {
+            if(elems.length > 0) {
                 console.log('rangy bug');
-                for (let i = 0; i < elems.length; i++) {
+                for(let i = 0; i < elems.length; i++) {
                     elems[i].classList.remove('highlight');
                 }
             }
@@ -71,25 +70,33 @@ class Slide extends Component {
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                    subtitle={''}
-                    showHighLightButtons={true}
-                    handleHiglight={handleHiglight}
-                    handleErase={handleErase}
-                />
-                <div className="flex">
-                    <div className="col-50 pic-container-left fade-in-delayed">
+                        subtitle={''}
+                        showHighLightButtons={true}
+                        showPostItButton={true}
+                        handleHiglight={handleHiglight}
+                        handleErase={handleErase}
+                        />
+                <div className="row" id="selectable">
+                    <div className="col-50 left-container">
                         <img src={image.src} alt={image.alt} />
-                        <p className="pic-footer">{image.footText}</p>
                     </div>
-                    <div className="col-50">
-                        <Quote text={'Hoy puedes y debes impulsar tu marca dentro del ecosistema digital a través de la gestión de redes sociales y profesionales, como LinkedIn. Hacerlo bien demanda una considerable inversión de tiempo y esfuerzo, pero la recompensa valdrá la pena.'}
-                            author={'Lee Hecht Harrison (2020)'}/>
-
-<p className="m-t"><b>¿Sabías que LinkedIn es la red de profesionales más grande del mundo? </b></p>
-
-<p>Cuenta con más de 720 millones de usuarios y cada 7 segundos se produce una contratación (Jolda, L., 2020).</p>
-
-<p>Hacer uso correcto de esta red te permitirá catapultar tu imagen profesional, incluso a nivel global.</p>
+                    <div className="col-50 right-container">
+                        <p id="selectable">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facere cumque fuga.</p>
+                        <JumboModal buttonText={'Opción A'}>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facere cumque fuga.</p>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet consectetur</li>
+                                <li>Lorem ipsum dolor sit amet consectetur</li>
+                                <li>Lorem ipsum dolor sit amet consectetur</li>
+                            </ul> 
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt omnis libero iure eos deleniti assumenda maiores quisquam. Excepturi esse pariatur debitis sint facere, corporis sit error omnis vel, id optio quia! Ad ab incidunt recusandae temporibus, aperiam odit vel deserunt.</p>
+                        </JumboModal>
+                        <JumboModal buttonText={'Opción B'}>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facere cumque fuga.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt omnis libero iure eos deleniti assumenda maiores quisquam. Excepturi esse pariatur debitis sint facere, corporis sit error omnis vel, id optio quia! Ad ab incidunt recusandae temporibus, aperiam odit vel deserunt.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facere cumque fuga.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt omnis libero iure eos deleniti assumenda maiores quisquam. Excepturi esse pariatur debitis sint facere, corporis sit error omnis vel, id optio quia! Ad ab incidunt recusandae temporibus, aperiam odit vel deserunt.</p>
+                        </JumboModal>
                     </div>
                 </div>
             </div>

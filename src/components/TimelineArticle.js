@@ -7,7 +7,7 @@ class Timeline16 extends Component {
         return (
             <article>
                 <div className="item" onClick={() => this.props.handleArticle(this.props.index)}>
-                    <div className="pic">
+                    <div className="title">
                         <span>{parse(this.props.title)}</span>
                     </div>
                 </div>

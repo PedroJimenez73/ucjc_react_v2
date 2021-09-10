@@ -5,12 +5,9 @@
     background-color: white;
     margin: 2rem 0 1rem;
     padding: 2rem 1rem 1rem;
-    @include noselect;
-}
-
-.question{
-
-    &-img{
+    @include noselect();
+    
+    .question-img{
         position: absolute;
         top: -35px;
         left: 5px;
@@ -21,25 +18,30 @@
         bottom: -55px;
         right: -10px;
         padding: 20px 10px 10px;
-        animation: none;
-    }
-}
-
-@media (min-width: $tablet-size){
-    .question__container{
-        margin: 45px 30px;
-        min-width: 60%;
     }
 }
 
 .question-answer {
-    width: 80%;
-    max-width: 840px;
-    box-sizing: content-box;
-    margin: 2rem auto;
-    box-shadow: $shadow;
     border: 1px solid #d3d3d3;
+    position: relative;
+    box-shadow: $shadow;
     background-color: white;
+    margin: 2rem 0 1rem;
+    padding: 2rem 1rem 1rem;
+    @include noselect;
+
+    .question-img {
+        position: absolute;
+        top: -35px;
+        left: 5px;
+        padding: 0 10px;
+        background-color: white;
+        width: 70px;
+        height: 70px;
+        bottom: -55px;
+        right: -10px;
+        padding: 20px 10px 10px;
+    }
 
     article {
         transition: all 700ms ease-in-out;
@@ -47,23 +49,9 @@
 
         .question-text {
             position: relative;
-            padding: 1rem;
+            padding-bottom: 1rem;
             @include flex(row, space-between, flex-end);
             cursor: pointer;
-
-            .question-img{
-                position: absolute;
-                top: -60px;
-                left: 5px;
-                padding: 0 10px;
-                background-color: white;
-                width: 70px;
-                height: 70px;
-                bottom: -55px;
-                right: -10px;
-                padding: 20px 10px 10px;
-                animation: none;
-            }
 
             span {
                 font-size: 1rem;
@@ -91,36 +79,32 @@
     }
 }
 
-@media (max-width: $mobile-size) {
-    .question-answer {
-        width: 100%;
-        margin: 2rem 0;
-    }
-}
-
-
 .auto-evaluation {
-    width: 80%;
-    max-width: 840px;
-    box-sizing: content-box;
-    margin: 2rem auto;
+    border: 1px solid #d3d3d3;
+    position: relative;
     box-shadow: $shadow;
     background-color: white;
-    border: 1px solid #d3d3d3;
-    padding: 2rem;
+    margin: 2rem 0 1rem;
+    padding: 2rem 1rem 1rem;
+    @include noselect();
+
+    .question-img{
+        position: absolute;
+        top: -35px;
+        left: 5px;
+        padding: 0 10px;
+        background-color: white;
+        width: 70px;
+        height: 70px;
+        bottom: -55px;
+        right: -10px;
+        padding: 20px 10px 10px;
+    }
 
     .question-text {
-        position: relative;
         padding: 0.5rem 1rem;
         display: block;
 
-        .question-img{
-            width: 70px;
-            height: 70px;
-            position: absolute;
-            top: -80px;
-            left: -20px;
-        }
 
         label {
             display: block;

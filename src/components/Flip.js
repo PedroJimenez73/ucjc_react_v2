@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import autoBind from 'react-autobind';
+import { Translation } from "react-i18next";
 
 class Flip extends Component {
     constructor() {
@@ -24,8 +25,8 @@ class Flip extends Component {
         }
         return (
             <div>
-                <p className="instructions">Pulse sobre cada imagen para visualizar la información.</p>
-                <div className="flexy">
+                <p className="instructions"><Translation>{(t, { i18n }) => <>{t('flipCardsInstructions')}</>}</Translation></p>
+                <div className="flips-container">
                     {this.props.children.map((child, i) => {
                         return React.cloneElement(child, {index: i, open: this.state.open[i], handleFlip});
                         }                            

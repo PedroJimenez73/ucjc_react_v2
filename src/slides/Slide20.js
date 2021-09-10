@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import withScorm from '../services/withScorm';
 import autoBind from 'react-autobind';
+import withScorm from '../services/withScorm';
 import { pages } from '../App';
-import Titles from '../components/Titles';
-import GlossaryModal from '../components/GlossaryModal';
-import VerticalTable from '../components/VerticalTable';
-import VerticalTableContent from '../components/VerticalTableContent';
-import picFile from '../img/RLE_M3_12.jpg';
 import rangy from "rangy/lib/rangy-core.js";
 import "rangy/lib/rangy-highlighter";
 import "rangy/lib/rangy-classapplier";
 import "rangy/lib/rangy-textrange";
 import "rangy/lib/rangy-serializer";
+import Titles from '../components/Titles';
+import QuestionAnswer from '../components/QuestionAnswer';
+import picFile from '../img/pic9.jpg';
 
 class Slide extends Component {
+
     constructor() {
         super()
         rangy.init();
@@ -22,20 +21,16 @@ class Slide extends Component {
     }
 
     componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
+        this.getData();
     }
 
     getData() {
         const {currentPage, cmiDataState} = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
+        setTimeout(()=> {
+            if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
+                this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
+            }
+        }, 500)
     }
 
     render() {
@@ -43,12 +38,12 @@ class Slide extends Component {
 
         this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
             ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
+            tagNames: ["span", "a", "li"]
         }));
 
         const handleHiglight = () => {
             deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
+            this.highlighter.highlightSelection("highlight", {containerElementId: 'selectable'});
             const serializedHighlights = this.highlighter.serialize();
             setHighlight(currentPage - 1, serializedHighlights)
         }
@@ -64,48 +59,36 @@ class Slide extends Component {
             }
             deleteHighlight(currentPage - 1);
         }
+
         const image = {
             src: picFile,
             alt: 'imagen',
             footText: ''
         };
-        const titles = [
-            'De qué trata tu marca',
-            'Cuál es tu motivación e intereses',
-            'Qué valor aporta tu talento, qué problemática solucionas con tus capacidades'
-        ]
+
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                        subtitle={''}
+                        subtitle={'Pregunta con respuesta'}
                         showHighLightButtons={true}
+                        showPostItButton={true}
                         handleHiglight={handleHiglight}
                         handleErase={handleErase}
                         />
-                <div className="flex">
-                    <div className="col-50">
-                        <p>Un <GlossaryModal term={'<i>Pitch </i>personal'} text={'<i>pitch</i> personal'} color={'#00BFFF'} /> es una herramienta muy útil para cuando disponemos de pocos minutos para presentarnos y generar una primera impresión. Es una presentación breve, concisa y muy clara de ti mismo. Debe durar entre 30 segundos y un minuto y debe resumir la siguiente información:</p>
-                        <VerticalTable titles={titles}>
-                            <VerticalTableContent>
-                                <p>Quién eres.</p>
-                            </VerticalTableContent>
-                            <VerticalTableContent>
-                                <p>Qué deseas lograr o estás logrando.</p>
-                            </VerticalTableContent>
-                            <VerticalTableContent>
-                                <p>En qué te diferencias.</p>
-                            </VerticalTableContent>
-                        </VerticalTable>
-                        <p className="m-t">La base de tu discurso debe atraer a los oyentes, transmitir buena actitud, provocar curiosidad.</p>
-
-                        <div className="super-text">
-                            <p>Recuerda que si te encuentras buscando una oportunidad laboral, es importante adaptar tu <i>pitch</i> personal a la posición y empresa a la que estás postulando.</p>
-                        </div>
-
+                <div className="row" id="selectable">
+                    <div className="col-50 left-container">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fuga quis ducimus nihil! Pariatur, recusandae ratione consectetur cum quisquam modi?</p>
+                        <QuestionAnswer questionText={'¿Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias veniam quam tenetur?'}>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque facere cumque fuga.</p>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet consectetur</li>
+                                <li>Lorem ipsum dolor sit amet consectetur</li>
+                                <li>Lorem ipsum dolor sit amet consectetur</li>
+                            </ul> 
+                        </QuestionAnswer>
                     </div>
-                    <div className="col-50 pic-container-right fade-in-delayed">
+                    <div className="col-50 right-container">
                         <img src={image.src} alt={image.alt} />
-                        <p className="pic-footer">{image.footText}</p>
                     </div>
                 </div>
             </div>

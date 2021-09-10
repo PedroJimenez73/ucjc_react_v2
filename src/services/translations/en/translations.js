@@ -11,5 +11,7 @@ export const TRANSLATIONS_EN = {
     bibliographyTitle: 'Bibliography',
     feedbackTitle: 'Feedback',
     creditsTitle: 'Credits',
-    conceptMapInstructions: 'Move the cursor over the map to view it fully'
+    conceptMapInstructions: 'Move the cursor over the map to view it fully',
+    flipCardsInstructions: 'Click on each picture to show the information',
+    timelineInstructions: 'Click on each rectangle to show the information',
 };

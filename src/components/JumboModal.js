@@ -21,7 +21,7 @@ const JumboModal = (props) => {
 
     return(
       <>
-        <button className="m-b" style={{margin: '0 auto', display: 'block'}} onClick={handleToggleModal}>{props.buttonText}</button>
+        <button className="m-b" style={{margin: '1rem auto', display: 'block'}} onClick={handleToggleModal}>{props.buttonText}</button>
         <span ref={overlayRef} className={isModalOpen ? 'overlay open' : 'overlay'} onClick={handleToggleModal}>
             <span className="modal jumbo">
                 <span className="modal-header">

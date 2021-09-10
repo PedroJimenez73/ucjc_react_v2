@@ -1,98 +1,96 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
 import { pages } from '../App';
 import Titles from '../components/Titles';
-import Quote from '../components/Quote';
-import parse from 'html-react-parser';
-import rangy from "rangy/lib/rangy-core.js";
-import "rangy/lib/rangy-highlighter";
-import "rangy/lib/rangy-classapplier";
-import "rangy/lib/rangy-textrange";
-import "rangy/lib/rangy-serializer";
-import picFile from '../img/RLE_M3_10.jpg';
-
+import Timeline from '../components/Timeline';
+import TimelineArticle from '../components/TimelineArticle';
+import picFile1 from '../img/bell.jpg';
+import picFile2 from '../img/compu.jpg';
+import picFile3 from '../img/tcp.png';
+import picFile4 from '../img/int1.jpg';
 class Slide extends Component {
+
     constructor() {
         super()
-        rangy.init();
-        this.highlighter = rangy.createHighlighter();
         autoBind(this);
     }
 
-    componentDidMount() {
-        this.getData()
-    }
-
-    componentDidUpdate() {
-        this.getData()
-    }
-
-    getData() {
-        const { currentPage, cmiDataState } = this.props.sco;
-
-        if (cmiDataState.highLightPagesData && cmiDataState.highLightPagesData[currentPage - 1] !== '') {
-            this.highlighter.deserialize(cmiDataState.highLightPagesData[currentPage - 1]);
-        }
-
-    }
     render() {
-        const { currentPage, deleteHighlight, setHighlight } = this.props.sco;
+        const {currentPage} = this.props.sco;
 
-        this.highlighter.addClassApplier(rangy.createClassApplier("highlight", {
-            ignoreWhiteSpace: true,
-            tagNames: ["span", "a", "b", "li"]
-        }));
-
-        const handleHiglight = () => {
-            deleteHighlight(currentPage - 1);
-            this.highlighter.highlightSelection("highlight");
-            const serializedHighlights = this.highlighter.serialize();
-            setHighlight(currentPage - 1, serializedHighlights)
+        const image1 = {
+            src: picFile1,
+            style: {width: '160px', display: 'block', margin: '0 auto'},
+            alt: ''
         }
-
-        const handleErase = () => {
-            this.highlighter.removeAllHighlights()
-            const elems = document.getElementsByClassName('highlight');
-            if (elems.length > 0) {
-                console.log('rangy bug');
-                for (let i = 0; i < elems.length; i++) {
-                    elems[i].classList.remove('highlight');
-                }
-            }
-            deleteHighlight(currentPage - 1);
+        const image2 = {
+            src: picFile2,
+            style: {width: '260px', display: 'block', margin: '0 auto'},
+            alt: ''
         }
-
-        const image = {
-            src: picFile,
-            alt: 'imagen',
-            footText: ''
-        };
-
+        const image3 = {
+            src: picFile3,
+            style: {width: '160px', display: 'block', margin: '0 auto'},
+            alt: ''
+        }
+        const image4 = {
+            src: picFile4,
+            style: {width: '310px', display: 'block', margin: '0 auto'},
+            alt: ''
+        }
+        
         return (
             <div className="slide">
                 <Titles title={pages[currentPage - 1].title}
-                    subtitle={''}
-                    showHighLightButtons={true}
-                    handleHiglight={handleHiglight}
-                    handleErase={handleErase}
-                />
-                <div className="flex">
-                    <div className="col-50">
-                        <p>La visibilidad es un elemento muy importante de tu liderazgo profesional. No se trata solo de realizar buenas contribuciones, sino también de hacer que se noten (Canepa, P., & Merino, P., 2020):</p>
-
-                        <ol className="regular abc">
-                            <li>Compartir aprendizajes y experiencias personales o de tu equipo.</li>
-                            <li>Comunicar lo que eres capaz de hacer.</li>
-                            <li>Comunicar lo que te gustaría hacer y los temas que te interesan.</li>
-                        </ol>
-
-                        <Quote text={'Una red efectiva requiere tu atención, mantenimiento y cuidado.'}
-                            author={'(Paige. M. , 2020)'} />
-                    </div>
-                    <div className="col-50 pic-container-right fade-in-delayed">
-                        <img src={image.src} alt={image.alt} />
-                        {/* <p className="pic-footer">{parse(image.footText)}</p> */}
+                        subtitle={''}
+                        showHighLightButtons={false}
+                        showPostItButton={true}
+                        />
+                <div className="row" id="selectable">
+                    <div className="col-100">
+                        <Timeline>
+                            <TimelineArticle title={'1958'}>
+                                <div className="flex j-center a-center">
+                                    <div className="col-50 left-container">
+                                        <p>La compañía BELL crea el primer módem que permitía transmitir datos binarios sobre una línea telefónica simple.</p>
+                                    </div>
+                                    <div className="col-50 right-container">
+                                        <img style={image1.style} src={image1.src} alt={image1.alt} />
+                                    </div>
+                                </div>
+                            </TimelineArticle>
+                            <TimelineArticle title={'1969'}>
+                                <div className="flex j-center a-center">
+                                    <div className="col-50 left-container">
+                                        <p>Conexión de las primeras computadoras entre 4 universidades estadounidenses a través de la <i>Interface Message Processor</i> de Leonard Kleinrock.</p>
+                                    </div>
+                                    <div className="col-50 right-container">
+                                        <img style={image2.style} src={image2.src} alt={image2.alt} />
+                                    </div>
+                                </div>
+                            </TimelineArticle>
+                            <TimelineArticle title={'1981'}>
+                                <div className="flex j-center a-center">
+                                    <div className="col-50 left-container">
+                                        <p>Definición del protocolo TCP/IP y de la palabra «Internet».</p>
+                                    </div>
+                                    <div className="col-50 right-container">
+                                        <img style={image3.style} src={image3.src} alt={image3.alt} />
+                                    </div>
+                                </div>
+                            </TimelineArticle>
+                            <TimelineArticle title={'1991'}>
+                                <div className="flex j-center a-center">
+                                    <div className="col-50 left-container">
+                                        <p>10 millones de computadoras conectadas.</p>
+                                    </div>
+                                    <div className="col-50 right-container">
+                                        <img style={image4.style} src={image4.src} alt={image4.alt} />
+                                    </div>
+                                </div>
+                            </TimelineArticle>
+                        </Timeline>
                     </div>
                 </div>
             </div>

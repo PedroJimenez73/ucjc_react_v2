@@ -135,6 +135,7 @@ a {
     }
 
     img {
+        display: inline;
         height: 0.8rem;
         margin-right: 0.1rem;
         margin-bottom: 0;
@@ -180,14 +181,12 @@ button {
 .titles h3,
 .accordion-title,
 .accordion-content,
-.accordion-content,
-.accordion-content,
-.accordion-content,
 .tempor,
 .counter,
 .super-text,
 .quote-container,
 .link-container,
+.flips-container,
 .pic-footer,
 .glossary  {
     span.highlight,
