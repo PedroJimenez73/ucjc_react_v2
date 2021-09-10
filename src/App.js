@@ -103,7 +103,7 @@ export const pages = [
     { title: "Preguntas", component: Slide19, name: 'Slide19'},
     { title: "Preguntas", component: Slide20, name: 'Slide20'},
     { title: "Preguntas", component: Slide21, name: 'Slide21'},
-    { title: "1.5 Actividad de refuerzo", component: Slide22, name: 'Slide22'},
+    { title: "Vídeo", component: Slide22, name: 'Slide22'},
     { title: "1.6 Recapitulando", component: Slide23, name: 'Slide23'},
     { title: "Herramientas para la búsqueda de prácticas o empleo", component: Slide24, name: 'Slide24', item: '2'},
     { title: "Video", component: Slide25, name: 'Slide25'},

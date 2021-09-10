@@ -31,7 +31,7 @@ class Slide extends Component {
                 <Titles title={pages[currentPage - 1].title}
                         subtitle={'Autocomprobación'}
                         showHighLightButtons={false}
-                        showPostItButton={true}
+                        showPostItButton={false}
                         />
                 <div className="row" id="selectable">
                     <div className="col-100">

@@ -46,16 +46,19 @@ class VideoNote extends Component {
 
         const downloadNotes = () => {
             const doc = new jsPDF();
-            doc.addImage(logo, 10, 8, 30, 14.32);
-            doc.setFontSize(14)
-            doc.setTextColor(83, 104, 120)
-            doc.text(generalInfo.degree , 10, 30);
-            doc.text(generalInfo.subject, 10, 38);
-            doc.text(generalInfo.title, 10, 46);
+            const degree = generalInfo.degree.replace('<i>','').replace('</i>','');
+            const subject = generalInfo.subject.replace('<i>','').replace('</i>','');
+            const title = generalInfo.title.replace('<i>','').replace('</i>','');
+            doc.addImage(logo, 10, 8, 40, 17.9);
+            doc.setFontSize(14);
+            doc.setTextColor(83, 104, 120);
+            doc.text(degree, 10, 30);
+            doc.text(subject, 10, 38);
+            doc.text(title, 10, 46);
             doc.setTextColor(21, 21, 21);
             doc.setFontSize(12)
             doc.text(getDateEs(), 10, 65);
-            doc.text('Anotaciones ' + this.props.title, 10, 73);
+            doc.text('Apuntes ' + this.props.title, 10, 73);
             doc.setTextColor(36, 36, 36);
             doc.rect(10, 80, 190, 150).stroke('#00BFFF');
             const isIOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -70,13 +73,13 @@ class VideoNote extends Component {
 
         return (
             <div className="video-note">
-                {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum est sapiente enim minus libero eius neque repudiandae quas quo nisi fugit quia ducimus saepe minima suscipit provident vitae ipsa, quod sunt molestias voluptatem porro quae sequi similique! Vitae atque dolore provident quaerat! Libero voluptatibus aliquid sunt, maiores ipsa aperiam amet. */}
+                <p>Apuntes</p>
                 <textarea placeholder="Escriba aquí sus anotaciones"
                           maxLength="450" 
                           onChange={this.onChange}
                           value={this.state.videoNoteText}></textarea>
                 <div className="flex j-center a-center m-t">
-                    <button className="outline" onClick={downloadNotes}>Descargar en PDF</button>
+                    <button onClick={downloadNotes}>Descargar PDF</button>
                 </div>
             </div>
         )
