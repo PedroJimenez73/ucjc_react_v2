@@ -163,10 +163,9 @@
 }
 
 .final-evaluation {
-    width: 80%;
     max-width: 840px;
     box-sizing: content-box;
-    margin: 2rem auto;
+    margin: 1rem auto;
     box-shadow: $shadow;
     background-color: white;
     border: 1px solid #d3d3d3;
@@ -189,13 +188,33 @@
             border-bottom: none;
             color: $danger-color;
         }
+
+        &.success {
+            border: 1px solid #c3e6cb;
+            background-color: #d4edda;
+            color: $success-color;
+            text-align: center;
+        }
+
+        &.danger {
+            border: 1px solid #f5c6cb;
+            background-color: #f8d7da;
+            color: $danger-color;
+            text-align: center;
+        }
+
+        &.result {
+            border-bottom: none;
+            padding: 0 0 1rem;
+        }
+
+        .nav-to {
+            color: $danger-color;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 
-    p.results {
-        text-align: center;
-        border-bottom: none;
-        padding: 0 0 1rem;
-    }
 
     label {
         display: block;

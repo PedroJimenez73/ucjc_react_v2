@@ -174,8 +174,8 @@ class ScormProvider extends Component {
             evaluationData: {
                 corrects: null,
                 questionsNumber: null,
-                attemps: 3,
-                maxAttemps: 3
+                attemps: 2,
+                maxAttemps: 2
             }
         }
         this.setState({ cmiDataState: originalCmiDataState })
