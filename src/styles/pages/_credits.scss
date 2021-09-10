@@ -3,8 +3,8 @@
     height: calc(100vh - 8rem);
     background-image: url('../../img/logos/icono-tr.svg');
     background-repeat: no-repeat;
-    background-position: right -10%;
-    background-size: 50%;
+    background-position: left center;
+    background-size: 100%;
     padding: 3rem;
     @include flex(row, center, center);
     -webkit-animation: fade-in 900ms ease-in-out;

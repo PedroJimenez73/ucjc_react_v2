@@ -24,7 +24,7 @@ class Slide extends Component {
                         />
                 <div className="row">
                     <div className="col-60">
-                        <iframe title={'video'} src="https://player.vimeo.com/video/545401762" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+                        <iframe title={'video'} src="https://player.vimeo.com/video/578374087" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
                     </div>
                     <div className="col-40">
                         <VideoNote title={pages[currentPage - 1].title} videoNumber={currentPage} />

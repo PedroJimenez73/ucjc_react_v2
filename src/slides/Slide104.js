@@ -19,7 +19,7 @@ class Slide extends Component {
                     <hr />
                     <p>{generalInfo.teacherName}</p>
                     <hr />
-                    <p>&copy; 2021 UTEC</p>
+                    <p>&copy; 2021 Universidad Camilo José Cela</p>
                 </div>
                 <img src={frontpage} alt="" />
             </div>
