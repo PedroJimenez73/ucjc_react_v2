@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
 import EvaluationInfo from '../data/evaluationInfo';
@@ -6,6 +6,7 @@ import icon1 from '../img/icons/check-circle.svg';
 import icon2 from '../img/icons/x-circle.svg';
 import parse from 'html-react-parser';
 import { pages } from '../App';
+import i18n from '../services/translations/i18n';
 
 class Evaluation extends Component {
     constructor() {
@@ -19,6 +20,7 @@ class Evaluation extends Component {
             corrects: 0,
             showAnswers: false,
         }
+        this.topRef = createRef();
     }
 
     componentDidMount() {
@@ -96,23 +98,25 @@ class Evaluation extends Component {
             })
             this.setState({results: results, corrects: corrects, showAnswers: true});
             setEvaluationState(corrects, this.state.userAnswers.length);
+            this.topRef.current.scrollIntoView({ behavior: 'smooth' });
         }
         return (
             <>
+            <div ref={this.topRef}>&nbsp;</div>
             {
                 !this.state.showEvaluation && cmiDataState.evaluationData.attemps === cmiDataState.evaluationData.maxAttemps
                 ?  
                     <div className="evaluation-instructions">
-                        <p>A continuación debe realizar la evaluación de esta unidad de la siguiente forma:</p> 
+                        <p>{i18n.t('evaluationTexts.intro')}</p> 
                         <ul>
-                            <li>La evaluación consta de {this.state.userAnswers.length} preguntas con varias respuestas posibles de las cuales podrán ser correctas una o varias.</li>
-                            <li>En el enunciado de las preguntas se advierte si tienen varias respuestas posibles.</li>
-                            <li>Se dispone de {cmiDataState.evaluationData.attemps} intentos como máximo para realizar la evaluación, aunque estos intentos se pueden realizar en sesiones de acceso diferentes.</li>
-                            <li>Para enviar los resultados será necesario contestar a todas las preguntas, en caso contrario el botón enviar no estará habilitado.</li>
-                            <li>Para superar la evaluación será necesario acertar más del 50% de la prueba.</li>
+                            <li>{i18n.t('evaluationTexts.instructionsA') + this.state.userAnswers.length + i18n.t('evaluationTexts.instructionsB')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsC')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsD') + cmiDataState.evaluationData.attemps + i18n.t('evaluationTexts.instructionsE')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsF')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsG')}</li>
                         </ul>
                         <div className="flex j-end a-center m-t">
-                            <button className="outline" onClick={() => this.handleStartEvaluation()}>Comenzar</button>
+                            <button className="outline" onClick={() => this.handleStartEvaluation()}>{i18n.t('evaluationTexts.startButton')}</button>
                         </div>
                     </div>
                 : '' 
@@ -121,24 +125,24 @@ class Evaluation extends Component {
                 !this.state.showEvaluation && cmiDataState.evaluationData.attemps < cmiDataState.evaluationData.maxAttemps && cmiDataState.evaluationData.attemps !== 0 && cmiDataState.evaluationData.corrects / this.state.userAnswers.length < 0.5
                 ?  
                     <div className="evaluation-instructions">
-                        <p><b>Nuevo intento evaluación</b></p>
-                        <p>A continuación debe realizar la evaluación de esta unidad de la siguiente forma:</p> 
+                        <p><b>{i18n.t('evaluationTexts.newTryIntro')}</b></p>
+                        <p>{i18n.t('evaluationTexts.intro')}</p> 
                         <ul>
-                            <li>La evaluación consta de {this.state.userAnswers.length} preguntas con varias respuestas posibles de las cuales podrán ser correctas una o varias.</li>
-                            <li>En el enunciado de las preguntas se advierte si tienen varias respuestas posibles.</li>
-                            <li>Se dispone de {cmiDataState.evaluationData.attemps} intentos como máximo para realizar la evaluación, aunque estos intentos se pueden realizar en sesiones de acceso diferentes.</li>
-                            <li>Para enviar los resultados será necesario contestar a todas las preguntas, en caso contrario el botón enviar no estará habilitado.</li>
-                            <li>Para superar la evaluación será necesario acertar más del 50% de la prueba.</li>
+                            <li>{i18n.t('evaluationTexts.instructionsA') + this.state.userAnswers.length + i18n.t('evaluationTexts.instructionsB')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsC')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsD') + cmiDataState.evaluationData.attemps + i18n.t('evaluationTexts.instructionsE')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsF')}</li>
+                            <li>{i18n.t('evaluationTexts.instructionsG')}</li>
                         </ul>
                         {
                             cmiDataState.evaluationData.attemps === 1
                             ?
-                            <p>Dispone de un último intento.</p>
+                            <p>{i18n.t('evaluationTexts.lastTry')}</p>
                             :
-                            <p>Dispone de {cmiDataState.evaluationData.attemps} intentos mas.</p>
+                            <p>{i18n.t('evaluationTexts.tryCounterA') + cmiDataState.evaluationData.attemps + i18n.t('evaluationTexts.tryCounterB')}</p>
                         }
                         <div className="flex j-end a-center m-t">
-                            <button className="outline" onClick={() => this.handleStartEvaluation()}>Nuevo intento</button>
+                            <button className="outline" onClick={() => this.handleStartEvaluation()}>{i18n.t('evaluationTexts.newTryButton')}</button>
                         </div>
                     </div>
                 : '' 
@@ -152,12 +156,12 @@ class Evaluation extends Component {
                             ?
                             <p className="flex j-center a-center">
                                 <img className="m-r" src={icon1} alt="" />
-                                Enhorabuena, superó la evaluación. La puntuación que obtuvo fue {cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}.
+                                {i18n.t('evaluationTexts.successMessage') + cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}.
                             </p>
                             :
                             <p className="flex j-center a-center">
                                 <img className="m-r" src={icon2} alt="" />
-                                Lo sentimos, no superó la evaluación. La puntuación que obtuvo fue {cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}.
+                                {i18n.t('evaluationTexts.failMessage') + cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}.
                             </p>
                         }
                     </div>
@@ -187,11 +191,11 @@ class Evaluation extends Component {
                         </div>
                     })}
                     <div className="flex j-end a-center m-t">
-                        {!this.state.validForm ? <p className="valid-text">Complete todas las preguntas</p>: null}
+                        {!this.state.validForm ? <p className="valid-text">{i18n.t('evaluationTexts.failValidation')}</p>: null}
                         {!this.state.showAnswers ? 
                                 <button disabled={!this.state.validForm} 
                                         className="outline m-l-small"
-                                        onClick={() => {setResults()}}>Comprobar</button> : null}
+                                        onClick={() => {setResults()}}>{i18n.t('evaluationTexts.checkButton')}</button> : null}
                     </div>
                     {
                         this.state.showAnswers
@@ -200,9 +204,9 @@ class Evaluation extends Component {
                             {
                                 cmiDataState.evaluationData.corrects / this.state.userAnswers.length >= 0.5
                                 ?
-                                <p className="success">Enhorabuena, ha superado la evaluación. La puntuación obtenida es {cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}</p>
+                                <p className="success">{i18n.t('evaluationTexts.successMessage') + cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}</p>
                                 : 
-                                <p className="danger">Lo sentimos, no ha superado la evaluación. La puntuación obtenida es {cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}</p>
+                                <p className="danger">{i18n.t('evaluationTexts.failMessage') + cmiDataState.evaluationData.corrects + '/' + this.state.userAnswers.length}</p>
                             }
                             {
                                 cmiDataState.evaluationData.attemps > 0 && cmiDataState.evaluationData.corrects / this.state.userAnswers.length < 0.5
@@ -212,11 +216,11 @@ class Evaluation extends Component {
                                         {
                                             cmiDataState.evaluationData.attemps === 1
                                             ?
-                                            <p className="result">Dispone de 1 intento más. Repase los apartados antes de intentar de nuevo.</p>
+                                            <p className="result">{i18n.t('evaluationTexts.tryRemainder')}</p>
                                             :
-                                            <p className="result">Dispone de {cmiDataState.evaluationData.attemps} intentos más. Repase los apartados antes de intentar de nuevo.</p>
+                                            <p className="result">{i18n.t('evaluationTexts.tryRemainderA') + cmiDataState.evaluationData.attemps + i18n.t('evaluationTexts.tryRemainderB')}</p>
                                         }
-                                        <p>Ha fallado las preguntas:</p>
+                                        <p>{i18n.t('evaluationTexts.failQuestionsIntro')}</p>
                                         { 
                                             EvaluationInfo.questions.map((question, i) => {
                                                 return (
@@ -225,7 +229,7 @@ class Evaluation extends Component {
                                                             ? '' : 
                                                             <p className="result">
                                                                 <span>{parse(question.ennunciate)}&nbsp;</span> 
-                                                                {question.page !== null ? <span className="nav-to" onClick={() => {navToPage(question.page)}}>Repasa el apartado {parse(pages[question.page - 1].title)}</span> : ''}
+                                                                {question.page !== null ? <span className="nav-to" onClick={() => {navToPage(question.page)}}>{i18n.t('evaluationTexts.navToText')} {parse(pages[question.page - 1].title)}</span> : ''}
                                                             </p>
                                                         }
                                                     </>
@@ -239,7 +243,7 @@ class Evaluation extends Component {
                                     {
                                         cmiDataState.evaluationData.attemps === 0
                                         ?
-                                        <p className="results">No dispone de más intentos</p>
+                                        <p className="results">{i18n.t('evaluationTexts.zeroTry')}</p>
                                         :
                                         ''
                                     }

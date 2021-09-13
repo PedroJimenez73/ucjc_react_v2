@@ -36,5 +36,31 @@ export const TRANSLATIONS_EN = {
         successMessage: 'Congratulations you have passed the test.',
         failMessage: 'Sorry you haven\'t passed the test.',
         tryAgainButton: 'Try again'
+    },
+    evaluationTexts: {
+        intro: 'Then you must perform the evaluation of this unit in the following way:',
+        instructionsA: 'The evaluation consists of ',
+        instructionsB: ' questions with several possible answers of which one or more may be correct.',
+        instructionsC: 'Each statement of the questions shows whether they have several possible answers.',
+        instructionsD: 'A maximum of ',
+        instructionsE: ' attempts are available to perform the assessment, although these attempts can be made in different login sessions.',
+        instructionsF: 'To send the results it will be necessary to answer all the questions, otherwise the send button will not be enabled.',
+        instructionsG: 'To pass the evaluation it will be necessary to have correct more than 50% of the questions.',
+        startButton: 'Start',
+        newTryIntro: 'New try',
+        lastTry: 'You have one last try.',
+        tryCounterA: 'You have ',
+        tryCounterB: ' more attempts.',
+        newTryButton: 'New try',
+        successMessage: 'Congratulations, you passed the evaluation. The score he obtained was ',
+        failMessage: 'Sorry, you didn\'t pass the evaluation. The score he obtained was ',
+        failValidation: 'Complete all questions',
+        checkButton: 'Check',
+        tryRemainder: 'You have 1 more attempt. Review the sections before trying again.',
+        tryRemainderA: 'You have ',
+        tryRemainderB: ' more attempts. Review the sections before trying again.',
+        failQuestionsIntro: 'Failed questions:',
+        navToText: 'Review the section ',
+        zeroTry: 'You have no more attempts'
     }
 };

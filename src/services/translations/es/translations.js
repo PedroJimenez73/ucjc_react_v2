@@ -36,5 +36,31 @@ export const TRANSLATIONS_ES = {
         successMessage: 'Enhorabuena ha superado la prueba.',
         failMessage: 'Lo sentimos no ha superado la prueba.',
         tryAgainButton: 'Intentar de nuevo'
+    },
+    evaluationTexts: {
+        intro: 'A continuación debe realizar la evaluación de esta unidad de la siguiente forma:',
+        instructionsA: 'La evaluación consta de ',
+        instructionsB: ' preguntas con varias respuestas posibles de las cuales podrán ser correctas una o varias.',
+        instructionsC: 'En el enunciado de las preguntas se advierte si tienen varias respuestas posibles.',
+        instructionsD: 'Se dispone de ',
+        instructionsE: ' intentos como máximo para realizar la evaluación, aunque estos intentos se pueden realizar en sesiones de acceso diferentes.',
+        instructionsF: 'Para enviar los resultados será necesario contestar a todas las preguntas, en caso contrario el botón enviar no estará habilitado.',
+        instructionsG: 'Para superar la evaluación será necesario acertar más del 50% de la prueba.',
+        startButton: 'Comenzar',
+        newTryIntro: 'Nuevo intento evaluación',
+        lastTry: 'Dispone de un último intento.',
+        tryCounterA: 'Dispone de ',
+        tryCounterB: ' intentos mas.',
+        newTryButton: 'Nuevo intento',
+        successMessage: 'Enhorabuena, superó la evaluación. La puntuación que obtuvo fue ',
+        failMessage: 'Lo sentimos, no superó la evaluación. La puntuación que obtuvo fue ',
+        failValidation: 'Complete todas las preguntas',
+        checkButton: 'Comprobar',
+        tryRemainder: 'Dispone de 1 intento más. Repase los apartados antes de intentar de nuevo.',
+        tryRemainderA: 'Dispone de ',
+        tryRemainderB: ' intentos más. Repase los apartados antes de intentar de nuevo.',
+        failQuestionsIntro: 'Ha fallado las preguntas:',
+        navToText: 'Repasa el apartado ',
+        zeroTry: 'No dispone de más intentos'
     }
 };
