@@ -60,3 +60,22 @@
     }
 
 }
+
+@media (max-width: $mobile-size) {
+   .loader {
+        
+        .logo-container {
+            height: 34px;
+            width: 200px;
+
+            img {
+                width: 200px;
+                &:nth-of-type(2) {
+                    left: calc(50% + 60px);
+                }
+            }
+
+        }
+
+    } 
+}

@@ -66,7 +66,7 @@ class Associate extends Component {
             <>
                 <p className="instructions">{i18n.t('associateInstructions')}</p>
                 <div className="flex associate">
-                    <div className="col-50">
+                    <div className="col-50 left-container">
                         {
                             this.props.terms.letfTerms.map((item, i) => <div key={i} 
                                                                        className={`item ${this.state.selectedLeft === i ? 'selected' : ''} ${this.state.correctsLeft[i] ? 'success' : ''}`}
@@ -76,7 +76,7 @@ class Associate extends Component {
                                                                   )
                         }
                     </div>
-                    <div className="col-50">
+                    <div className="col-50 right-container">
                         {
                             this.props.terms.rightTerms.map((item, i) => <div key={i} 
                                                                        className={`item ${this.state.selectedRight === i ? 'selected' : ''} ${this.state.correctsRight[i] ? 'success' : ''}`}

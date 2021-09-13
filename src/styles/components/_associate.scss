@@ -1,6 +1,6 @@
 .associate {
     .item {
-        width: 440px;
+        width: calc(100% - 4rem);
         margin: 1rem auto;
         text-align: center; 
         box-shadow: $shadow;
