@@ -19,10 +19,6 @@ class VideoNote extends Component {
         this.getData()
     }
 
-    componentDidUpdate() {
-        //this.getData()
-    }
-
     getData() {
         const {currentPage, cmiDataState} = this.props.sco;
         if (cmiDataState.videoNotesPagesData && cmiDataState.videoNotesPagesData[currentPage - 1] !== '') {

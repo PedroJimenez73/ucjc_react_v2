@@ -36,6 +36,7 @@ import Slide101 from './slides/Slide101';
 import Slide102 from './slides/Slide102';
 import Slide103 from './slides/Slide103';
 import Slide104 from './slides/Slide104';
+import Slide105 from './slides/Slide105';
 
 import i18n from './services/translations/i18n';
 
@@ -68,7 +69,8 @@ export const pages = [
     { title: i18n.t('evaluationTitle'), component: Slide101, name: 'Slide101'},
     { title: i18n.t('interestingLinksTitle'), component: Slide102, name: 'Slide102'},
     { title: i18n.t('bibliographyTitle'), component: Slide103, name: 'Slide103'},
-    { title: i18n.t('creditsTitle'), component: Slide104, name: 'Slide104'}
+    { title: i18n.t('valorationTitle'), component: Slide104, name: 'Slide104'},
+    { title: i18n.t('creditsTitle'), component: Slide105, name: 'Slide105'}
 ]
 
 class App extends Component {

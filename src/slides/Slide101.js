@@ -19,7 +19,9 @@ class Slide extends Component {
             <div className="slide back">
                 <Titles title={pages[currentPage - 1].title}
                         subtitle={''}
-                        showButtons={false}/>
+                        showHighLightButtons={false}
+                        showPostItButton={false}
+                        />
                 <div className="flex">
                     <div className="col-100">
                        <Evaluation />

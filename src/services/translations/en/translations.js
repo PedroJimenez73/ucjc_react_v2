@@ -16,6 +16,7 @@ export const TRANSLATIONS_EN = {
     creditsTitle: 'Credits',
     notesTitle: 'Notes',
     donutTitle: 'Terms donut',
+    valorationTitle: 'Valoration',
     notesPlaceholder: 'Write here your notes',
     conceptMapInstructions: 'Move the cursor over the map to view it fully',
     flipCardsInstructions: 'Click on each picture to show the information',
@@ -23,6 +24,8 @@ export const TRANSLATIONS_EN = {
     associateInstructions: 'Associate each element on the left with the one on the right by successively clicking on each one',
     associateMessage: 'Correct! You can continue to the next screen',
     glossaryInstructions: 'Scroll and click on the terms to view the definition',
+    valorationInstructions: 'Rate this SCORM',
+    valorationFormInstructions: 'Tell us what would you improve',
     donutTexts: {
         intro: 'Then try to figure out the words in this unit in the shortest time possible. (Maximum',
         startButton: 'Start',

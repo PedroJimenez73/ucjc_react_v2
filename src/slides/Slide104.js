@@ -1,27 +1,42 @@
 import React, { Component } from 'react'
-import autoBind from 'react-autobind';
 import withScorm from '../services/withScorm';
-import generalInfo from '../data/generalInfo';
-import frontpage from '../img/frontpage.jpg';
+import autoBind from 'react-autobind';
+import { pages } from '../App';
+import Titles from '../components/Titles';
+import Valoration from '../components/Valoration';
 
 class Slide extends Component {
-
     constructor() {
         super()
         autoBind(this);
     }
 
+    componentDidMount() {
+        this.getData()
+    }
+
+    componentDidUpdate() {
+        this.getData()
+    }
+
+    getData() {
+
+    }
+
     render() {
+        const { currentPage } = this.props.sco;
         return (
-            <div className="credits">
-                <div className="data">
-                    <p>{generalInfo.teacherTextGender}</p>
-                    <hr />
-                    <p>{generalInfo.teacherName}</p>
-                    <hr />
-                    <p>&copy; 2021 Universidad Camilo José Cela</p>
+            <div className="slide">
+                <Titles title={pages[currentPage - 1].title}
+                        subtitle={''}
+                        showHighLightButtons={false}
+                        showPostItButton={false}
+                        />
+                <div className="flex">
+                    <div className="col-70">
+                        <Valoration />
+                    </div>
                 </div>
-                <img src={frontpage} alt="" />
             </div>
         )
     }

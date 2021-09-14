@@ -1,0 +1,91 @@
+.stars-rating-container {
+    @include flex(row, space-between, center);
+
+    p {
+        margin-bottom: 0;
+    }
+
+    .stars {
+        @include flex(row, flex-start, center);
+
+        .star {
+            font-size: 30px;
+            color: #CCCCCC;
+            margin: 0 0.2rem;
+            cursor: pointer;
+        }
+    }
+}
+
+.stars:hover .star {
+    color: $primary-color;
+}
+
+.stars.one .star:nth-child(1) {
+    color: $primary-color;
+}
+
+.stars.two .star:nth-child(1),
+.stars.two .star:nth-child(2) {
+    color: $primary-color;
+}
+
+.stars.three .star:nth-child(1),
+.stars.three .star:nth-child(2),
+.stars.three .star:nth-child(3) {
+    color: $primary-color;
+}
+
+.stars.four .star:nth-child(1),
+.stars.four .star:nth-child(2),
+.stars.four .star:nth-child(3),
+.stars.four .star:nth-child(4) {
+    color: $primary-color;
+}
+
+.stars.five .star:nth-child(1),
+.stars.five .star:nth-child(2),
+.stars.five .star:nth-child(3),
+.stars.five .star:nth-child(4),
+.stars.five .star:nth-child(5) {
+    color: $primary-color;
+}
+
+.stars .star:hover ~ .star {
+    color: #CCCCCC;
+}
+
+.text-rating-container {
+    border: 1px solid #d3d3d3;
+    position: relative;
+    box-shadow: $shadow;
+    background-color: white;
+    margin: 2rem 0 1rem;
+    padding: 1rem;
+
+    p {
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 200px;
+        display: block;
+        margin: 0 auto;
+        resize: none;
+        border: 1px solid #d3d3d3;
+        padding: 1rem;
+        font-size: 1rem;
+        line-height: 1.4;
+        font-family: inherit;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+    }
+}
+
+@media (max-width: $mobile-size) {
+    .stars-rating-container {
+        @include flex(column, center, center);
+    }
+}

@@ -176,6 +176,10 @@ class ScormProvider extends Component {
                 questionsNumber: null,
                 attemps: 2,
                 maxAttemps: 2
+            },
+            valoration: {
+                ratingStars: 0,
+                ratingComments: ''
             }
         }
         this.setState({ cmiDataState: originalCmiDataState })
@@ -266,6 +270,18 @@ class ScormProvider extends Component {
         this.setState({prevCmiDataState}, () => this.storeDataValue("cmi.suspend_data", JSON.stringify(this.state.cmiDataState)))
     }
 
+    setRatingStars(data) {
+        let prevCmiDataState = this.state.cmiDataState;
+        prevCmiDataState.valoration.ratingStars = data;
+        this.setState({prevCmiDataState}, () => this.storeDataValue("cmi.suspend_data", JSON.stringify(this.state.cmiDataState)))
+    }
+
+    setRatingComments(data) {
+        let prevCmiDataState = this.state.cmiDataState;
+        prevCmiDataState.valoration.ratingComments = data;
+        this.setState({prevCmiDataState}, () => this.storeDataValue("cmi.suspend_data", JSON.stringify(this.state.cmiDataState)))
+    }
+
     setEvaluationState(corrects, questionsNumber) {
         let prevCmiDataState = this.state.cmiDataState;
         prevCmiDataState.evaluationData.corrects = corrects;
@@ -301,7 +317,9 @@ class ScormProvider extends Component {
             setHighlight: this.setHighlight,
             setPostit: this.setPostit,
             setVideoNote: this.setVideoNote,
-            setEvaluationState: this.setEvaluationState
+            setEvaluationState: this.setEvaluationState,
+            setRatingStars: this.setRatingStars,
+            setRatingComments: this.setRatingComments
         }
 
         return (

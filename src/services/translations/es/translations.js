@@ -16,6 +16,7 @@ export const TRANSLATIONS_ES = {
     creditsTitle: 'Créditos',
     notesTitle: 'Apuntes',
     donutTitle: 'Rosco de definiciones',
+    valorationTitle: 'Valoración',
     notesPlaceholder: 'Escriba aquí sus anotaciones',
     conceptMapInstructions: 'Desplácese con el cursor sobre el mapa para visualizarlo completamente',
     flipCardsInstructions: 'Pulse sobre cada imagen para visualizar la información',
@@ -23,6 +24,8 @@ export const TRANSLATIONS_ES = {
     associateInstructions: 'Asocie cada elemento de la izquierda con el de la derecha haciendo clic sucesivamente sobre cada uno',
     associateMessage: '¡Correcto! Puede continuar a la siguiente pantalla',
     glossaryInstructions: 'Desplácese y pulse en los términos para visualizar la definición',
+    valorationInstructions: 'Puntúa este SCORM',
+    valorationFormInstructions: 'Coméntanos qué mejorarías',
     donutTexts: {
         intro: 'A continuación, intente averiguar las palabras de esta unidad en el menor tiempo posible. (Máximo ',
         startButton: 'Comenzar',
