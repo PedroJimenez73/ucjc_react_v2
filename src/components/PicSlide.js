@@ -6,7 +6,7 @@ class PicSlide extends Component {
         return (
             <> 
                 {this.props.open ? 
-                    <div key={this.props.index}>
+                    <div>
                         {this.props.children}
                     </div>
                 : ''}

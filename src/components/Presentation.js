@@ -66,15 +66,20 @@ class Presentation extends Component {
     }
 
     updateSlideBtn = () => {
-        if (this.state.countSlide === 1) {
-            this.btnSlideBackRef.current.style.display = 'none';
-            this.btnSlideNextRef.current.style.display = 'block';
-        } else if (this.state.countSlide === this.slidesRef.length) {
-            this.btnSlideBackRef.current.style.display = 'block';
-            this.btnSlideNextRef.current.style.display = 'none';
+        if(Array.isArray(this.props.children)) {
+            if (this.state.countSlide === 1) {
+                this.btnSlideBackRef.current.style.display = 'none';
+                this.btnSlideNextRef.current.style.display = 'block';
+            } else if (this.state.countSlide === this.slidesRef.length) {
+                this.btnSlideBackRef.current.style.display = 'block';
+                this.btnSlideNextRef.current.style.display = 'none';
+            } else {
+                this.btnSlideBackRef.current.style.display = 'block';
+                this.btnSlideNextRef.current.style.display = 'block';
+            }
         } else {
-            this.btnSlideBackRef.current.style.display = 'block';
-            this.btnSlideNextRef.current.style.display = 'block';
+            this.btnSlideBackRef.current.style.display = 'none';
+            this.btnSlideNextRef.current.style.display = 'none';
         }
     }
 
@@ -125,10 +130,9 @@ class Presentation extends Component {
         return (
             <div id="back-slide" ref={this.backSlideRef}>
                 <button id="btn-slide-back" ref={this.btnSlideBackRef} onClick={() => {this.handlePrevSlide()}}>&lt;</button>
-                {this.props.children.map((child, i) => {
+                {Array.isArray(this.props.children) ? this.props.children.map((child, i) => {
                     return React.cloneElement(child, {index: i, slidesRef: this.slidesRef});
-                    }                            
-                )}
+                }) : (React.cloneElement(this.props.children, {index: 0, slidesRef: this.slidesRef}))}
                 <button id="btn-slide-next" ref={this.btnSlideNextRef} onClick={() => {this.handleNextSlide()}}>&gt;</button>
             </div>
         )

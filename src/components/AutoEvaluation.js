@@ -38,7 +38,7 @@ class AutoEvaluation extends Component {
                 <img className="question-img" src={ question } alt="Interrogación"/>
                 { this.props.questions.map((question, i) => {
                     return (
-                        <div className="question-text">
+                        <div className="question-text" key={i}>
                             <label>
                                 <input name="question" type="radio" onClick={() => handleQuestion(i)}/>
                                 {parse(this.props.questions[i])}
@@ -49,7 +49,7 @@ class AutoEvaluation extends Component {
                 { this.props.feedback.map((feedback, i) => {
                     return (
                         <>
-                        {this.state.open[i] ? <div className={ feedback.correct ? 'answer-content success' : 'answer-content danger'}>
+                        {this.state.open[i] ? <div key={i} className={ feedback.correct ? 'answer-content success' : 'answer-content danger'}>
                             <p>{parse(feedback.text)}</p>
                         </div>: null}
                         </>

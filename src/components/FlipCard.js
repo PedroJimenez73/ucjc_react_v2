@@ -12,8 +12,7 @@ class FlipCard extends Component {
 
         return (
                 <div className={this.props.open ? "flip-card turn" : "flip-card"} 
-                     onClick={() => this.props.handleFlip(this.props.index)}
-                     key={this.props.index}>
+                     onClick={() => this.props.handleFlip(this.props.index)}>
                     <div className="front-card">
                         <img src={this.props.pic} alt={'imagen'} />
                         <p>

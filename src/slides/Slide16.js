@@ -79,17 +79,17 @@ class Slide extends Component {
                     <div className="col-100">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos inventore iste soluta pariatur voluptas itaque aliquid perspiciatis? Reiciendis quia culpa modi exercitationem delectus excepturi itaque iusto quibusdam, sapiente dicta tempora facere quo ea, doloremque, nemo dolore cumque praesentium molestiae repudiandae!</p>
                         <VerticalTable titles={titles}>
-                            <VerticalTableContent>
+                            <VerticalTableContent key={0}>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem assumenda tenetur consequuntur nam temporibus explicabo voluptas quam mollitia, est libero!</p>
                             </VerticalTableContent>
-                            <VerticalTableContent>
+                            <VerticalTableContent key={1}>
                                 <ul>
                                     <li>Lorem ipsum dolor sit amet consectetur</li>
                                     <li>Lorem ipsum dolor sit amet consectetur</li>
                                     <li>Lorem ipsum dolor sit amet consectetur</li>
                                 </ul> 
                             </VerticalTableContent>
-                            <VerticalTableContent>
+                            <VerticalTableContent key={2}>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur consequatur expedita suscipit!</p>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur consequatur expedita suscipit!</p>
                             </VerticalTableContent>

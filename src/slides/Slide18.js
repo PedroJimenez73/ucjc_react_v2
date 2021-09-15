@@ -50,7 +50,7 @@ class Slide extends Component {
                 <div className="row" id="selectable">
                     <div className="col-100">
                         <Timeline>
-                            <TimelineArticle title={'1958'}>
+                            <TimelineArticle key={0} title={'1958'}>
                                 <div className="flex j-center a-center">
                                     <div className="col-50 left-container">
                                         <p>La compañía BELL crea el primer módem que permitía transmitir datos binarios sobre una línea telefónica simple.</p>
@@ -60,7 +60,7 @@ class Slide extends Component {
                                     </div>
                                 </div>
                             </TimelineArticle>
-                            <TimelineArticle title={'1969'}>
+                            <TimelineArticle key={1} title={'1969'}>
                                 <div className="flex j-center a-center">
                                     <div className="col-50 left-container">
                                         <p>Conexión de las primeras computadoras entre 4 universidades estadounidenses a través de la <i>Interface Message Processor</i> de Leonard Kleinrock.</p>
@@ -70,7 +70,7 @@ class Slide extends Component {
                                     </div>
                                 </div>
                             </TimelineArticle>
-                            <TimelineArticle title={'1981'}>
+                            <TimelineArticle key={2}  title={'1981'}>
                                 <div className="flex j-center a-center">
                                     <div className="col-50 left-container">
                                         <p>Definición del protocolo TCP/IP y de la palabra «Internet».</p>
@@ -80,7 +80,7 @@ class Slide extends Component {
                                     </div>
                                 </div>
                             </TimelineArticle>
-                            <TimelineArticle title={'1991'}>
+                            <TimelineArticle key={3} title={'1991'}>
                                 <div className="flex j-center a-center">
                                     <div className="col-50 left-container">
                                         <p>10 millones de computadoras conectadas.</p>

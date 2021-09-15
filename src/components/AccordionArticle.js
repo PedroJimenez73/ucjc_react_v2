@@ -9,7 +9,7 @@ class AccordionArticle extends Component {
     
     render() {
         return (
-            <article className={this.props.open ? "open" : ""} key={this.props.index}>
+            <article className={this.props.open ? "open" : ""}>
                 <div className="accordion-title" onClick={() => this.props.handleAccordion(this.props.index)}>
                     <span>{parse(this.props.title)}</span>
                     <img className="plus" src={plus} alt="" />

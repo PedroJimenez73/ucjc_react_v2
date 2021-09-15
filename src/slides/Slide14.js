@@ -76,20 +76,20 @@ class Slide extends Component {
                     <div className="col-100">
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>
                         <Flip>
-                            <FlipCard title={'<i>Opening</i>'} pic={picFile1}>
+                            <FlipCard key={0} title={'<i>Opening</i>'} pic={picFile1}>
                                 <p>Inicia con una breve descripción de tu estatus académico o profesional, desde lo básico:</p>
                                 <ol className="abc">
                                     <li>Nombre y apellido.</li>
                                     <li>Carrera y campo de especialización.</li>
                                 </ol>
                             </FlipCard>
-                            <FlipCard title={'Breve descripción de lo que haces'} pic={picFile2}>
+                            <FlipCard key={1} title={'Breve descripción de lo que haces'} pic={picFile2}>
                                 <ol className="abc">
                                     <li>Puesto laboral más reciente y una muy breve descripción de las responsabilidades que cumpliste.</li>
                                     <li>En caso de no contar con experiencia laboral, presenta un proyecto académico o de investigación que hayas realizado, ¿qué necesidad atendió? o ¿qué problema solucionó? Enfócate en lo que aportaste desde tu rol, no solamente en los logros del equipo.</li>
                                 </ol>
                             </FlipCard>
-                            <FlipCard title={'¿Por qué deberían elegirte?'} pic={picFile3}>
+                            <FlipCard key={2} title={'¿Por qué deberían elegirte?'} pic={picFile3}>
                                 <ol className="abc">
                                     <li>Concéntrate en responder la siguiente pregunta: ¿qué te hace diferente?</li>
                                     <li>Brinda una respuesta clara y objetiva del por qué deben elegirte sobre otros profesionales que hacen lo mismo que tú.</li>

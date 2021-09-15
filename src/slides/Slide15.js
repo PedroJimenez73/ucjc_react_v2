@@ -85,13 +85,13 @@ class Slide extends Component {
                     <div className="col-50 right-container">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fuga quis ducimus nihil! Pariatur, recusandae ratione consectetur cum quisquam modi?</p>
                         <Accordion>
-                            <AccordionArticle title={'Lorem ipsum'}>
+                            <AccordionArticle key={0} title={'Lorem ipsum'}>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fuga quis ducimus nihil! Pariatur, recusandae ratione consectetur cum quisquam modi?</p>
                             </AccordionArticle>
-                            <AccordionArticle title={'Dolor <i>sit amet</i>'}>
+                            <AccordionArticle key={1} title={'Dolor <i>sit amet</i>'}>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae fuga quis ducimus nihil! Pariatur, recusandae ratione consectetur cum quisquam modi?</p>
                             </AccordionArticle>
-                            <AccordionArticle title={'Consectetur'}>
+                            <AccordionArticle key={2} title={'Consectetur'}>
                                 <ol className="abc">
                                     <li>Lorem ipsum dolor sit amet consectetur</li>
                                     <li>Lorem ipsum dolor sit amet consectetur</li>

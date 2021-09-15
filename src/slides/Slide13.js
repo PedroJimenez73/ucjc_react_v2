@@ -102,19 +102,19 @@ class Slide extends Component {
                     </div>
                     <div className="col-50 right-container">
                         <PicCarousel>
-                            <PicSlide>
+                            <PicSlide key={0}>
                                 <img className="carousel-pic" src={image1.src} alt={image1.alt} /> 
                                 <p className="pic-footer">{parse(image1.footText)}</p>
                             </PicSlide>
-                            <PicSlide>
+                            <PicSlide key={1}>
                                 <img className="carousel-pic" src={image2.src} alt={image2.alt} /> 
                                 <p className="pic-footer">{parse(image2.footText)}</p>
                             </PicSlide>
-                            <PicSlide>
+                            <PicSlide key={2}>
                                 <img className="carousel-pic" src={image3.src} alt={image3.alt} /> 
                                 <p className="pic-footer">{parse(image3.footText)}</p>
                             </PicSlide>
-                            <PicSlide>
+                            <PicSlide key={3}>
                                 <img className="carousel-pic" src={image4.src} alt={image4.alt} /> 
                                 <p className="pic-footer">{parse(image4.footText)}</p>
                             </PicSlide>
