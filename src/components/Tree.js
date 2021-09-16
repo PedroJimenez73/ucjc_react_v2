@@ -12,7 +12,7 @@ class Tree extends Component {
     }
 
     componentDidMount() {
-        if (window.innerWidth < this.props.minWidth) {
+        if ((window.innerWidth - 38) < this.props.width || this.props.width >= 1440) {
             this.setState({showInstructions: true});
         } 
         window.addEventListener("resize", this.handleResize);
@@ -23,7 +23,7 @@ class Tree extends Component {
     }
 
     handleResize() {
-        if (window.innerWidth < this.props.minWidth) {
+        if ((window.innerWidth - 38) < this.props.width) {
             this.setState({showInstructions: true});
         } else {
             this.setState({showInstructions: false});
@@ -36,7 +36,7 @@ class Tree extends Component {
             <>
                 {this.state.showInstructions ? <p className="instructions">{i18n.t('conceptMapInstructions')}</p> : ''}
                 <div className="tree">
-                    <div style={{minWidth: this.props.minWidth + 'px'}}>
+                    <div style={{width: this.props.width + 'px'}}>
                         {this.props.children}
                     </div>
                 </div>

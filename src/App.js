@@ -46,7 +46,7 @@ export const pages = [
     { title: i18n.t('conceptMapTitle'), component: Slide3, name: 'Slide3'},
     { title: "Layout", component: Slide4, name: 'Slide4'},
     { title: "Textos", component: Slide5, name: 'Slide5'},
-    { title: "Textos", component: Slide6, name: 'Slide6', item: '1'},
+    { title: "Textos", component: Slide6, name: 'Slide6'},
     { title: "Textos", component: Slide7, name: 'Slide7'},
     { title: "Textos", component: Slide8, name: 'Slide8'},
     { title: "Textos", component: Slide9, name: 'Slide9'},

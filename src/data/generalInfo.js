@@ -6,7 +6,7 @@ const generalInfo = {
     teacherName: 'Ruth Castillo Gualda',
     teacherTextGender: 'Autora',
     unitCode: 'PILOT_V2',
-    language: 'es'
+    language: 'en'
 } 
 
 export default generalInfo;

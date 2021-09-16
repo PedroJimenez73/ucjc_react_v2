@@ -17,7 +17,7 @@ class Slide extends Component {
                         showHighLightButtons={false}
                         showPostItButton={true}
                         />
-                <Tree minWidth={1800}>
+                <Tree width={1600}>
                      <ul>
                         <li>
                             <p className="fade-in tree-item tree-item-level1">Introducción a la Empleabilidad</p>
