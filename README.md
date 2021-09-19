@@ -1,5 +1,3 @@
 # Deploy
 
-npm run build && cp -R build/ ../rle_m3/docs
-
-code ../rle_m3/.
+npm run build && cp -R build/ ../PILOT_Scorm2/docs && code ../PILOT_Scorm2/.

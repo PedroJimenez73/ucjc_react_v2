@@ -2,7 +2,6 @@ const glossaryInfo = {
     glossaryTerms: [
         'Business Model Canvas (Modelo Canvas)',
         'Competencias profesionales',
-        'Conecto',
         'Curriculum Vitae o CV',
         'Doctor CV',
         'Empleabilidad',
@@ -19,7 +18,6 @@ const glossaryInfo = {
     glossaryDefinition: [
         'Es la herramienta utilizada para analizar y crear modelos de negocio de manera simplificada. Se visualiza de manera global en un lienzo dividido en los principales aspectos que involucran al negocio y componen la propuesta de valor que ofrece.',
         'Son todas aquellas capacidades que poseen los profesionales para realizar con éxito sus funciones y responsabilidades en el trabajo mediante una serie de conocimientos, habilidades y actitudes.',
-        'Portal laboral de la universidad de Ingeniería y Tecnología UTEC en cual tienes acceso a oportunidades de prácticas y empleo, así como a información sobre empleabilidad.',
         'Hoja de Vida que contiene el resumen de la información personal, académica y laboral del postulante.',
         'Plataforma de inteligencia artificial que evalúa tu CV y brinda un diagnóstico con recomendaciones para mejorarlo.',
         'Conjunto de habilidades que no solamente nos permiten obtener un empleo cuando lo buscamos, sino también mantenerlo y a lo largo de nuestra trayectoria conseguir mejores oportunidades de desarrollo profesional.',

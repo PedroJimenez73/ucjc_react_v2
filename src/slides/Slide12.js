@@ -77,8 +77,16 @@ class Slide extends Component {
                         />
                 <div className="row" id="selectable">
                     <div className="col-50 left-container">
-                        <img src={image.src} alt={image.alt} />
-                        <p className="pic-footer">{parse(image.footText)}</p>
+                        <div className="pic-footer-wrapper">
+                            <div className="parent">
+                                <div>
+                                    <img src={image.src} alt={image.alt} />
+                                </div>
+                                <div>
+                                    <p className="pic-footer">{parse(image.footText)}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="col-50 right-container">
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic itaque, dolor dolorem laboriosam ipsum praesentium doloremque qui, placeat est eaque dolore omnis.</p>

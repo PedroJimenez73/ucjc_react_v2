@@ -151,6 +151,19 @@
     padding-right: 1.5rem;
 }
 
+.pic-footer-wrapper {
+    display: inline-block;
+
+    .parent {
+        display: flex;
+        flex-direction: column;
+
+        > div:nth-child(2) {
+            background-color: #b9b9b9;
+        } 
+    }
+}
+
 .wider-pic {
     max-width: $tablet-size;
     margin: 0 auto;
@@ -164,10 +177,12 @@
 
     .left-container {
         padding-right: 0;
+        padding-bottom: 0.5rem;
     }
 
     .right-container {
         padding-left: 0;
+        padding-top: 0.5rem;
     }
 }
 
